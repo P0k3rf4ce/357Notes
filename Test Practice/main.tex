@@ -1,0 +1,518 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry} % margins
+\usepackage[justification=centering]{caption}
+%\usepackage{calrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amsthm}
+\usepackage{float}
+\usepackage{tikz-cd}
+\usepackage{ytableau}
+
+\renewcommand{\implies}{\Rightarrow}
+\newcommand{\longimplies}{\Longrightarrow}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\renewcommand{\H}{\mathbb{H}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\Lf}{\mathbb{L}}
+\newcommand{\Sp}{\mathbb{S}}
+\newcommand{\cl}[1]{\overline{#1}}
+\renewcommand{\emptyset}{\varnothing}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\maxnorm}[1]{\left\|#1\right\|_{\text{max}}}
+\newcommand{\opnorm}[1]{\left\|#1\right\|_{\mathrm{op}}}
+\newcommand{\supnorm}[1]{\left\|#1\right\|_{\infty}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\sspan}{\operatorname{span}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\ch}{\operatorname{char}}
+\newcommand{\poly}{\mathrm{P}}
+\newcommand{\mtx}{\mathcal{M}}
+\newcommand{\seq}{\mathbf{Seq}}
+\newcommand{\vv}[1]{\mathbf{#1}}
+\newcommand{\dirsum}{\oplus}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\im}{\operatorname{im}}
+
+\newcommand{\cj}[1]{\overline{#1}}
+\newcommand{\inprod}[2]{\left\langle#1,#2\right\rangle}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+\newcommand{\res}{\operatorname{res}}
+
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+
+% Theorem environments
+\usepackage{amsthm}
+
+\theoremstyle{definition} % The "plain" style italicizes all body text.
+	\newtheorem{thm}{Theorem}
+		\numberwithin{thm}{section} % Theorem numbers are determined by section.
+	\newtheorem{lemma}[thm]{Lemma}
+	\newtheorem{prop}[thm]{Proposition}
+	\newtheorem{cor}[thm]{Corollary}
+	\newtheorem{conj}[thm]{Conjecture}
+
+\theoremstyle{definition} % The "definition" style does not italicize body text..
+    \newtheorem{defn}[thm]{Definition}
+	\newtheorem{example}[thm]{Example}
+    \newtheorem{exercise}[thm]{Exercise}
+
+\usepackage{mathtools}
+
+\usetikzlibrary{decorations.markings,positioning,decorations.text}
+
+\def\xr{5}
+\def\yr{5}
+
+\usepackage{titlesec}
+\titleformat{\section}[hang]{\normalfont\fontsize{14}{0}\bfseries}{Problem \thesection\ }{0pt}{}
+
+\begin{document}
+
+\section{}
+
+Let $(M, d)$ be a metric space and $C(M)$ the space of continuous functions
+ $f: M \to \R$ with metric
+\[
+    D(f, g) = \sup_{x \in M}|f(x) - g(x)|.
+\]
+We say that a set of functions $\mathcal{F} \subset C(M)$ is pointwise 
+equicontinuous if for every $x \in M$ and $\varepsilon > 0$ there is a 
+$\delta$ (depending on $x$ and $\varepsilon > 0$) for which
+\[
+    |f(x) - f(y)| < \varepsilon
+\]
+for all $f \in \mathcal{F}$ and $y$ satisfying $d(x, y) < \delta$. 
+If $M$ is compact show that a pointwise equicontinuous family of 
+functions is a equicontinuous.
+
+\begin{proof}
+Fix $\varepsilon > 0$ and for each $y \in M$, take a $\delta_y > 0$ 
+for which $|f(x) - f(y)| < \varepsilon/2$ for all $d(x, y) < \delta_y$ and
+$f \in \mathcal{F}$.
+The balls $B_y(\delta_y/2)$ for $y \in M$ form an open cover of the compact
+$M$, so there is a finite subcover $\{B_{y_i}(\delta_{y_i}/2)\}$ for
+$y_1, \dots, y_n \in M$. Let $\delta = 
+\min\{\delta_{y_1}/2, \dots, \delta_{y_n}/2\} > 0$ and consider any 
+$x, y \in M$ with $d(x, y) < \delta$. $x \in B_{y_i}(\delta_{y_i}/2)$
+for some $i$ because the balls $B_{y_i}(\delta_{y_i}/2)$ cover $M$, and
+we note that
+\[
+    d(y, y_i) \leq d(x, y) + d(x, y_i) < \delta_{y_i}
+\] 
+so $y \in B_{y_i}(\delta_{y_i})$ as well. We then have for all 
+$f \in \mathcal{F}$,
+\[
+    |f(x) - f(y)| \leq |f(x) - f(y_i)| + |f(y) - f(y_i)| < \varepsilon
+\]
+because $d(x, y_i) < \delta_{y_i}$ and $d(y, y_i) < \delta_{y_i}$. Hence
+$\mathcal{F}$ is equicontinuous.
+\end{proof}
+
+\section{}
+
+Let $\{(X_i, di)\}_{i = 1}^\infty$ be a sequence of metric spaces. 
+Let $X = \prod_{i = 1}^\infty X_i$ and for any $x = (x_i)_i, y = (y_i)_i
+\in X$ define,
+\[
+    d(x, y) := \sum_{j = 1}^\infty 
+    \frac{1}{2^j}\frac{d_j(x_j, y_j)}{1 + d_j(x_j, y_j)}
+\]
+\begin{enumerate}[label=(\alph*)]
+    \item Show that $(X, d)$ is a metric space.
+    \item Let $x^{(n)} \in X$ and $x \in X$. Show that $x^{(n)} \to x$ 
+    in $(X, d)$ iff $x^{(n)}_i \to x_i$ in $(X_i, d_i)$ for all $i$.
+    \item Consider the case $X_i = \R$ and $d_i(x, y) := |x - y|$ 
+    for all $i$. Then $\ell^p \subset X$ for all $1 \leq p \leq \infty$. 
+    Compare convergence in $\ell^p$ with convergence in $(X, d)$.
+\end{enumerate}
+\begin{proof}
+\textit{(a)}. Firstly, we note that the general term of the series 
+$d(x, y)$ is positive, so its convergence follows from the series being
+bounded.
+\[
+    \sum_{j = 1}^\infty \frac{1}{2^j}\frac{d_j(x_j, y_j)}{1 + d_j(x_j, y_j)}
+    \leq \sum_{j = 1}^\infty \frac{1}{2^j} = 1
+\]
+hence $d(x, y)$ is well-defined. We also see that $d(x, y) \geq 0$ with
+equality if and only if each general term of the series is 0. That in turn
+is equivalent to $d_j(x_j, y_j) = 0$ for all $j$, and that is equivalent to
+$x = y$. $d(x, y) = d(y, x)$ follows by symmetry of each $d_j$.
+
+For the triangle inequlity, we note that the function 
+$f:[0, \infty) \to [0, \infty), x \mapsto x/(1 + x)$ has derivative 
+$f'(x) = (1 + x)^{-2} > 0$ for all $x$ in its domain.
+This means that $f$ is increasing, so for all 
+$x, y, z \in X, j$,
+\[
+    \frac{d_j(x_j, y_j)}{1 + d_j(x_j, y_j)} = f(d_j(x_j, y_j)) \leq 
+    f(d_j(x_j, z_j)) + f(d_j(y_j, z_j)) = 
+    \frac{d_j(x_j, z_j)}{1 + d_j(x_j, z_j)} + 
+    \frac{d_j(y_j, z_j)}{1 + d_j(y_j, z_j)}
+\]
+because $d_j(x_j, y_j) \leq d_j(x_j, z_j) + d_j(y_j, z_j)$. It then follows
+that 
+\[
+    d(x, y) = \sum_{j = 1}^\infty \frac{1}{2^j}
+    \frac{d_j(x_j, y_j)}{1 + d_j(x_j, y_j)} \leq 
+    \sum_{j = 1}^\infty \frac{1}{2^j}
+    \left(\frac{d_j(x_j, z_j)}{1 + d_j(x_j, z_j)} 
+    + \frac{d_j(y_j, z_j)}{1 + d_j(y_j, z_j)}\right)
+    = d(x, z) + d(y, z)
+\]
+so $d$ is a metric.
+
+\textit{(b)}. $(\longimplies)$. 
+Suppose $x^{(n)} \to x$ in $(X, d)$ 
+and fix $i, \varepsilon > 0$. We can take $N > 0$ such that 
+$d(x^{(n)}, x) < \varepsilon / 2^{i + 1}$ and $d(x^{(n)}, x) < 1$ 
+for $n \geq N$, and for all such $n$, we get 
+\[
+    d_i(x^{(n)}_i, x_i) \leq \frac{2d_i(x^{(n)}_i, x_i)}{1 + d_i(x^{(n)}_i, x_i)}
+    \leq 2^{i + 1}\sum_{j = 1}^\infty \frac{1}{2^j}
+    \frac{d_j(x_j, y_j)}{1 + d_j(x_j, y_j)} 
+    < 2^{i + 1} \cdot \varepsilon / 2^{i + 1} 
+    = \varepsilon
+\]
+Thus $x_i^{(n)} \to x_i$ in $(X_i, d_i)$.
+
+$(\Longleftarrow)$. 
+Suppose $x^{(n)}_i \to x_i$ in $(X_i, d_i)$ for each $i$. 
+Fix $\varepsilon > 0$ and take $k > 0$ for which $1/2^k < \varepsilon / 2$.
+For each $1 \leq i \leq k$ we can take $N_i > 0$ such that 
+$d_i(x^{(n)}_i, x_i) < \varepsilon / 2$ for all $n \geq N_i$, and we let 
+$N = \max\{N_1, \dots, N_k\}$. Then for all $n \geq N$, we get 
+\begin{align*}
+    d(x^{(n)}, x)
+    &= \sum_{j = 1}^\infty \frac{1}{2^j}
+    \frac{d_j(x_j^{(n)}, x_j)}{1 + d_j(x_j^{(n)}, x_j)} \\
+    &= \sum_{j = 1}^k \frac{1}{2^j} 
+    \frac{d_j(x_j^{(n)}, x_j)}{1 + d_j(x_j^{(n)}, x_j)}
+    + \sum_{j = k + 1}^\infty \frac{1}{2^j}
+    \frac{d_j(x_j, y_j)}{1 + d_j(x_j, y_j)} \\
+    &< \sum_{j = 1}^k \frac{1}{2^j} \frac{\varepsilon}{2}
+    + \sum_{j = k + 1}^\infty \frac{1}{2^j} \\
+    &< \frac{\varepsilon}{2}\sum_{j = 1}^\infty \frac{1}{2^j} 
+    + \frac{\varepsilon}{2}\sum_{j = 1}^\infty \frac{1}{2^j} \\
+    &= \varepsilon
+\end{align*}
+Thus $x^{(n)} \to x$ in $(X, d)$.
+
+\textit{(c)}.
+Note the following for all $x, y \in \ell^p$:
+\[
+    |x_i - y_i| \leq \left(\sum_{n = 1}^\infty |x_n - y_n|^p\right)^{1/p}
+    = d_p(x, y)
+\]
+This implies the following:
+\[
+    d(x, y) = \sum_{j = 1}^\infty \frac{1}{2^j}
+    \frac{|x_j - y_j|}{1 + |x_j - y_j|} \leq \sup_i|x_i - y_i| 
+    \leq d_p(x, y)
+\]
+which shows that any sequence that converges in $\ell^p$ also converges
+in $(X, d)$. The converse is not true however. The sequence 
+$x^{(n)} = e_n = (0, \dots, 0, 1, 0, \dots)$ with 1 in the $n$-th entry
+and zero elsewhere is convergent in $(X, d)$, since $x^{(n)}_i \to 0$
+for each $i$. However, for any $n \neq m$, 
+$d_p(x^{(m)}, x^{(n)}) = 2^{1/p}$ for $p \neq \infty$ 
+and $1$ if $p = \infty$, so the sequence isn't even Cauchy.
+\end{proof}
+
+\section{}
+
+Let $f: \R_\geq \to \R$ be a continuous function s.t. 
+$\lim_{n\to\infty} f(nx) = 0$ for all $x \in \R$ (here
+$\R_\geq := \{x \in \R : x \geq 0\}$). Prove that 
+$\lim_{x \to \infty} f(x) = 0$.
+
+Hint: apply the Baire Category theorem in the following steps:
+\begin{enumerate}[label=(\alph*)]
+    \item Let $\varepsilon > 0$ and define 
+    $E_k := \{x : |f(nx)| \leq \varepsilon, \forall n \geq k\}$. 
+    Show that $E_k$ is closed.
+    \item Show that $\R_\geq = \bigcup_k E_k$.
+    \item Conclude by the BCT that some $E_k$ 
+    contains an interval $(a, b)$.
+    \item Show that $\bigcup_{n \geq k}(na, nb) \leq (T, \infty)$ 
+    for some $T > 0$.
+    \item Conclude that $\limsup_{t \to \infty} |f(t)| \leq \varepsilon$ 
+    and so $\lim_{t \to \infty} f(t) = 0$.
+\end{enumerate}
+\begin{proof}
+\textit{(a).}
+Let $\varepsilon > 0$ and define $E_k := \{x : |f(nx)| 
+\leq \varepsilon, \forall n \geq k\}$. For any sequence $x_m \in E_k$
+that converges to $x \in \R$, we have $nx_m \to nx$ as $m \to \infty$
+for any $n \geq k$, and since $|f(nx_m)| \leq \varepsilon$
+and by continuity, we have $\varepsilon \geq 
+\lim_{m \to \infty} |f(nx_m)| = |f(nx)|$. Hence $x \in E_k$ so
+$E_k$ is closed.
+
+\textit{(b).}
+Given $x \in \R_\geq$, we have $\lim_{n \to \infty} f(nx) = 0$, so
+for some $k$, $|f(nx)| < \varepsilon$ whenever $n \geq k$.
+Thus $x \in E_k$ and so $\R_\geq \subseteq \bigcup_k E_k$. The other
+subset inclusion is obvious.
+
+\textit{(c).}
+By BCT, $\R_\geq$ being complete and a union of countably many closed
+sets $E_k$ implies one of $E_k$'s has a non-empty interior. 
+That is some $E_k$ contains an interval $(a, b)$.
+
+\textit{(d).}
+Note that for a large enough $n$, we have $n(b - a) > a$, which implies 
+that for all $n$ large enough, $(na, nb) \cup ((n + 1)a, (n + 1)b)$ is
+an interval. This shows that 
+$(T, \infty) \subset \bigcup_{n \geq k} (na, nb)$ for some $T > 0$.
+
+\textit{(e).}
+For each $x \in (T, \infty)$, we have $x \in (na, nb)$ for some 
+$n \geq k$, so $ny = x$ for some $y \in (a, b) \subseteq E_k$, 
+hence $|f(x)| = |f(ny)| \leq \varepsilon$. 
+Thus $f(x) \to 0$ as $x \to \infty$.
+\end{proof}
+
+\section{}
+
+Let $S \subseteq \ell^\infty$ be the set of bounded sequences s.t.
+\[
+    \lim_{n \to \infty} |x_n| = 0
+\]
+if $(x_n)_n \in S$.
+\begin{enumerate}[label=(\alph*)]
+    \item Prove that $S$ is closed.
+    \item Let $B$ be the unit ball in $\ell^\infty$. Show that 
+    $S \cap B$ is a closed and bounded set but is not compact.
+    \item Fix $x \in S$. Let $\mathcal{F}$ be the set of 
+    $y \in \ell^\infty$ so that $|y_n| \leq |x_n|$ for all $n \geq 0$. 
+    Show that $\mathcal{F}$ is compact.
+\end{enumerate}
+\begin{proof}
+\textit{(a).}
+Let $x^{(n)}$ be a sequence in $S$ that converges to $x \in \ell^\infty$.
+Then $|x_k| \leq |x^{(n)}_k - x_k| + |x^{(n)}_k|$ for all $k, n$.
+For any $\varepsilon > 0$, we take $N > 0, K > 0$ such that 
+$\supnorm{x^{(N)} - x} < \varepsilon/2$ and $|x^{(N)}_k| < \varepsilon/2$
+for all $k \geq K$. By our earlier estimate, $|x_k| < \varepsilon$,
+hence $x_k \to 0$ as $k \to \infty$, and thus $x \in S$.
+
+\textit{(b).}
+$S \cap B$ is closed as an intersection of two closed sets and 
+clearly bounded (contained in a unit ball). Notice that the sequences
+$e_i = (0, \dots, 0, 1, 0, \dots)$, with 1 in the $i$-th entry and zeros
+everywhere else, is in $S \cap B$. For any $i \neq j$, we have 
+$\supnorm{e_i - e_j} = 1$, so no subsequence of the sequence $(e_i)_i$
+is even Cauchy. Thus $S \cap B$ is not compact.
+
+\textit{(c).}
+Let $y^{(n)}$ be a sequence in $\mathcal{F}$
+\end{proof}
+
+\section{}
+
+Let $C([0, 1])$ be the set of continuous functions $f: [0, 1] \to \R$ with
+\[
+    D(f, g) = \sup_{x \in [0, 1]}|f(x) - g(x)|  
+\]
+For any $f \in C([0, 1])$ and $0 < \alpha \leq 1$ define,
+\[
+    \norm{f}_\alpha = \sup_x|f(x)| + 
+    \sup_{x, y}\frac{|f(x) - f(y)|}{|x - y|^\alpha}.
+\]
+Let $S := \{f : \norm{f}_\alpha \leq 1\}$. Show that $S$ is a compact set.
+\begin{proof}
+By Arzela-Ascoli theorem, it suffices to show that $S$ is closed, bounded,
+and equicontinuous. Boundedness follows from $\supnorm{f} \leq 
+\norm{f}_\alpha \leq 1$ for all $f \in S$. For equicontinuity, let
+$\varepsilon > 0$ and $\delta = \sqrt[\alpha]{\varepsilon} > 0$.
+For any $x, y \in [0, 1]$ with $|x - y| < \delta$ and $f \in S$, we have
+\[
+    |f(x) - f(y)| = |x - y|^\alpha 
+    \sup_{x, y}\frac{|f(x) - f(y)|}{|x - y|^\alpha} 
+    \leq |x - y|^\alpha < \delta^\alpha = \varepsilon
+\]
+so $S$ is equicontinuous. It remains to show that $S$ is closed.
+
+Let $f_n \in S$ be a sequence that converges to $f$ (uniformly). For fixed
+$x \neq y$
+\end{proof}
+
+\section{}
+
+Let $X = [0, 1]^n$ be the unit cube in $\R^n$. 
+Show that multivariate polynomials are dense in $C_b(X)$.
+\begin{proof}
+By the Stone-Weierstrass theorem, it suffices to show that 
+the multivariate polynomials $\mathcal{P}$ in $X$ form a function
+algebra that vanishes nowhere and separates points. Clearly, for any
+polynomials $f, g \in \mathcal{P}$ and constant $c \in \R$, we have that
+$f + g, cf, fg$ are also polynomials, so $\mathcal{P}$ is a 
+function algebra. The constant function $1$ is a polynomial, so
+$\mathcal{P}$ vanishes nowhere. For distinct points 
+$(a_1, \dots, a_n) \neq (b_1, \dots, b_n) \in X$, take $i$ such that
+$a_i \neq b_i$ and note that the polynomial $f(x_1, \dots, x_n) = 
+x_i - a_i$ is zero at $(a_1, \dots, a_n)$ but nonzero at
+$(b_1, \dots, b_n)$, so $\mathcal{P}$ separates points.
+Hence $\mathcal{P}$ is dense.
+\end{proof}
+
+\section{}
+
+Let $(b_{ij})^\infty_{i,j=1}$ be a doubly semi-infinite matrix so that
+\[
+    s := \sup_i \sum_{j = 1}^\infty |b_{ij}| < \infty  
+\]
+\begin{enumerate}[label=(\alph*)]
+    \item For any $x \in \ell^\infty$ define a sequence 
+    $F(x) = (F(x)_i)_i$ by
+    \[
+        F(x)_i = \sum_j b_{ij}x_j^2  
+    \]
+    Show that $F$ is a continuous mapping from $\ell^\infty$ 
+    to $\ell^\infty$.
+    \item Show that there is an $r > 0$ so that for any 
+    $a \in \ell^\infty$ with $\supnorm{a} < r$ the equation
+    \[
+        x = a + F(x)  
+    \]
+    has a solution $x \in \ell^\infty$. Show that this solution 
+    is unique among solutions that are
+    in some sufficiently small ball in $\ell^\infty$.
+\end{enumerate}
+\begin{proof}
+\textit{(a).}
+The series that defines $F(x)_i$ converges absolutely:
+\[
+    \sum_j |b_{ij}x_j|^2 \leq \supnorm{x}^2 \sum_j |b_{ij}| < \infty
+\]
+so $F(x)$ is well-defined. Fix $a \in \ell^\infty$, let 
+$\varepsilon > 0$, and take $M > 0$ such that $M > \norm{a}$. 
+Define $\delta = \min\{1, \varepsilon/(s(2M + 1))\} > 0$,
+let $x \in B_a(\delta)$, and note the bound for all $j$:
+\[
+    |x_j + a_j| \leq |x_i - a_j| + 2|a_j| 
+    < \delta + 2\supnorm{a} \leq 2M + 1
+\]
+We then have for all $i$,
+\begin{align*}
+    |F(x)_i - F(a)_i|
+    &= \left|\sum_j b_{ij}(x_j^2 - a_j^2)\right| \\
+    &\leq \sum_j |b_{ij}| \cdot |x_j + a_j| \cdot |x_j - a_j| \\
+    &\leq \left(\sup_i \sum_j |b_{ij}|\right)(2M + 1)\supnorm{x - a} \\
+    &< s(2M + 1)\delta \\
+    &\leq \varepsilon
+\end{align*}
+Thus $\supnorm{F(x) - F(a)} \leq \varepsilon$, and hence $F$ is continuous.
+
+\textit{(b)}.
+Let $\Phi_a: X \to X, x \mapsto a + F(x)$ for $a \in \ell^\infty$.
+We find conditions on $a$ that make $F$ into a contraction. 
+Let $a \in \ell^\infty$ with $\supnorm{a} < r/2$.
+For any $x, y \in \ell^\infty$ with 
+$\supnorm{x}, \supnorm{y} \leq r$, we have
+\[
+    |\Phi_a(x)_i - \Phi_a(y)_i| = |F(x)_i - F(y)_i| \leq 2sr\supnorm{x - y}  
+\]
+so any $0 < r < 1/(2s)$ works. Let $B := \cl{B}_0(r)$, and note 
+that if $F$ can be restricted to a function $B \to B$, then we will
+have that $F$ is a contraction by the above bound. To ensure of this,
+we show that $F(x)$ maps $x \in B$ to $B$.
+\[
+    |\Phi_a(x)_i| = |a_i + F(x)_i| \leq 
+    |a_i| + \sum_j |b_{ij}x_j^2| \leq r/2 + sr^2 < r
+\]
+so $\norm{\Phi_a(x)} \leq r$.
+
+Now let $a \in \ell^\infty$ with $\supnorm{a} < r/2$. $\Phi_a$ has a unique
+fixed point $x_0$ in $B$, which is then the unique solution to
+\[
+    x = \Phi_a(x) = a + F(x) 
+\]
+\end{proof}
+
+\section{}
+
+\section{}
+
+Let $X$ be a Banach space and $F: X \to X$ a contraction. Define 
+$G(x) := x + F(x)$. Show that $G$ is a bijection with continuous inverse.
+\begin{proof}
+Let $x_0$ be the unique fixed point of $F$, and $k < 1$ the constant
+that makes $F$ a contraction.
+Define $H_n: X \to X$ by $H_1(y) = y - F(x_0)$ and 
+$H_{n + 1}(y) = y - F(H_n(y))$ for $n \geq 1$. We then let
+$H: X \to X$ be $H(y) = \lim_{n \to \infty} H_n(y)$.
+To prove that $H$ is well-defined it suffices to show that
+$H_n(y)$ is a Cauchy sequence. Note the following bound
+\[
+    \norm{H_{n + 1}(y) - H_n(y)} = \norm{F(H_n(y)) - F(H_{n - 1}(y))} 
+    \leq k\norm{H_n(y) - H_{n - 1}(y)} \leq \cdots \leq k^n\norm{y - 2x_0}
+\]
+Given $\varepsilon > 0$, take $N > 0$ such that
+\[
+    \frac{k^N}{1 - k}\norm{y - 2x_0} < \varepsilon
+\]
+For any $N \leq n \leq m$, we have
+\begin{align*}
+    \norm{H_m(y) - H_n(y)}
+    &\leq \norm{H_m(y) - H_{m - 1}(y)} + 
+    \cdots + \norm{H_{n + 1}(y) - H_n(y)} \\
+    &\leq k^{m - 1}\norm{y - 2x_0} + \cdots + k^n\norm{y - 2x_0} \\
+    &= k^n(1 + k + \cdots + k^{m - n - 1})\norm{y - 2x_0} \\
+    &\leq k^N\sum_{i = 0}^\infty k^i \norm{y - 2x_0} \\
+    &= \frac{k^N}{1 - k}\norm{y - 2x_0} < \varepsilon
+\end{align*}
+Hence $H$ is well-defined. For any $x \in X$, we have
+\begin{align*}
+    G \circ H(x) 
+    &= G(\lim_{n \to \infty}H_n(x)) \\
+    &= \lim_{n \to \infty} H_n(x) + F(H_n(x)) \\
+    &= \lim_{n \to \infty} H_{n + 1}(x) + F(H_n(x)) \\
+    &= \lim_{n \to \infty} x - F(H_n(x)) + F(H_n(x)) \\
+    &= x
+\end{align*}
+thus $G \circ H = \id$. Also we have the following:
+\[
+    \norm{F(x) - F(H_n(x + F(x)))} \leq k\norm{x - H_n(x + F(x))}
+\]
+This allows us to show that $H \circ G = \id$
+\begin{align*}
+    \norm{H \circ G(x) - x}
+    &= \lim_{n \to \infty} \norm{H_n(x + F(x)) - x} \\
+    &= \lim_{n \to \infty} \norm{F(x) - F(H_{n - 1}(x + F(x)))} \\
+    &= \lim_{n \to \infty} \norm{F(x) - F(H_n(x + F(x)))} \\
+    &\leq \lim_{n \to \infty} k\norm{x - H_{n - 1}(x + F(x))} \\
+    &= k\lim_{n \to \infty} \norm{H_n(x + F(x)) - x} \\
+    &= k^m\lim_{n \to \infty} \norm{H_n(x + F(x)) - x} \\
+    &\to 0 \text{ as } m \to \infty
+\end{align*}
+Thus $H \circ G(x) = x$. Therefore $H$ is the inverse of $G$.
+
+Lastly we show that $H$ is continuous. Consider a sequence $y_m \in X$
+that converges to $y$. For all $n, k$, we have 
+\[
+    \norm{H_n(y_m) - H_n(y)} \leq \norm{y_m - y} 
+    + k\norm{H_{n - 1}(y_m) - H_{n - 1}(y)} = \cdots 
+    = (1 + k + \cdots + k^{n - 1})\norm{y_m - y} 
+    \leq \frac{\norm{y_m - y}}{1 - k}
+\]
+Taking $n \to \infty$ we see that 
+$\norm{H(y_m) - H(y)} \leq \norm{y_m - y}/(1 - k) \to 0$ 
+as $m \to \infty$. Hence $H(y_m) \to H(y)$, and so $H$ is continuous.
+\end{proof}
+
+\end{document}

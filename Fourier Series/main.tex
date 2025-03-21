@@ -1,0 +1,797 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry} % margins
+\usepackage[justification=centering]{caption}
+%\usepackage{calrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amsthm}
+\usepackage{float}
+\usepackage{tikz-cd}
+\usepackage{ytableau}
+
+\renewcommand{\implies}{\Rightarrow}
+\newcommand{\longimplies}{\Longrightarrow}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\renewcommand{\H}{\mathbb{H}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\Lf}{\mathbb{L}}
+\newcommand{\Sp}{\mathbb{S}}
+\newcommand{\cl}[1]{\overline{#1}}
+\renewcommand{\emptyset}{\varnothing}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\maxnorm}[1]{\left\|#1\right\|_{\text{max}}}
+\newcommand{\opnorm}[1]{\left\|#1\right\|_{\mathrm{op}}}
+\newcommand{\supnorm}[1]{\left\|#1\right\|_{\infty}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\sspan}{\operatorname{span}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\ch}{\operatorname{char}}
+\newcommand{\poly}{\mathrm{P}}
+\newcommand{\mtx}{\mathcal{M}}
+\newcommand{\seq}{\mathbf{Seq}}
+\newcommand{\vv}[1]{\mathbf{#1}}
+\newcommand{\dirsum}{\oplus}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\im}{\operatorname{im}}
+
+\newcommand{\cj}[1]{\overline{#1}}
+\newcommand{\inprod}[2]{\left\langle#1,#2\right\rangle}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+\newcommand{\res}{\operatorname{res}}
+
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+
+% Theorem environments
+\usepackage{amsthm}
+
+\theoremstyle{definition} % The "plain" style italicizes all body text.
+	\newtheorem{thm}{Theorem}
+		\numberwithin{thm}{section} % Theorem numbers are determined by section.
+	\newtheorem{lemma}[thm]{Lemma}
+	\newtheorem{prop}[thm]{Proposition}
+	\newtheorem{cor}[thm]{Corollary}
+	\newtheorem{conj}[thm]{Conjecture}
+
+\theoremstyle{definition} % The "definition" style does not italicize body text..
+    \newtheorem{defn}[thm]{Definition}
+	\newtheorem{example}[thm]{Example}
+    \newtheorem{exercise}[thm]{Exercise}
+
+\usepackage{mathtools}
+
+\usetikzlibrary{decorations.markings,positioning,decorations.text}
+
+\def\xr{5}
+\def\yr{5}
+
+\usepackage{titlesec}
+\titleformat{\section}[hang]{\normalfont\fontsize{14}{0}\bfseries}{Problem 8.\thesection\ }{0pt}{}
+
+\begin{document}
+
+\section{}
+
+Let
+\[
+\hat{f}(n) := \frac{1}{2\pi} \int_{-\pi}^{\pi} e^{-inx} f(x) \,dx
+\]
+so that the Fourier series of a function $f$ is
+\[
+\sum_{n \in \mathbb{Z}} \hat{f}(n) e^{inx}.
+\]
+
+    Show that
+\[
+\sum_{j=-N}^{N} e^{ijx} = \frac{\sin((N+1/2)x)}{\sin(x/2)}.
+\]
+\begin{proof}
+Let $f(x)$ be the function on the RHS. Notice that for any $x$ on which
+$f(x)$ is defined, we have
+\[
+    f(x + 2\pi) = \frac{\sin((N+1/2)x + (2N + 1)\pi)}{\sin(x/2 + \pi)} 
+    = \frac{-\sin((N+1/2)x )}{-\sin(x/2)} = f(x)
+\]
+that is, $f$ is $2\pi$-periodic where it is defined. In its current form,
+$f$ is not defined at $2n\pi$ for $n \in \Z$, however, we have
+\[
+    \lim_{x \to 2n\pi} f(x) = \lim_{x \to 2n\pi} 
+    \frac{\sin((N+1/2)x)}{\sin(x/2)}
+    = \lim_{x \to 2n\pi} 
+    \frac{(N + 1/2)\cos((N+1/2)x)}{(1/2)\cos(x/2)}
+    = 2N + 1
+\]
+so $f$ can be extended to a $2\pi$-periodic function on $\R$. 
+This means that the Fourier series of $f$ on $[-\pi, \pi]$ is
+valid on all of $\R$. We now compute that series. For any $n \in \Z$,
+we have
+\begin{align*}
+    e^{-inx}f(x)
+    &= e^{-inx}\frac{\sin((N+1/2)x)}{\sin(x/2)} \\
+    &= e^{-inx}\frac{e^{i(N+1/2)x} - e^{-i(N+1/2)x}}
+    {e^{ix/2} - e^{-ix/2}} \\
+    &= e^{-inx}e^{-iNx}\frac{e^{i(2N + 1)x} - 1}{e^{ix} - 1} \\
+    &= e^{-inx}e^{-iNx}\sum_{m = 0}^{2N} e^{imx} \\
+    &= \sum_{m = -N}^{N} e^{i(m - n)x}
+\end{align*}
+For $m \neq n$, the term $e^{i(m - n)x}$ has an antiderivative 
+$e^{i(m - n)x}/(i(m - n))$, which evaluates to 0 over the bounds
+$-\pi$ to $\pi$. Thus the $n$-th term of the Fourier series of $f$ is
+\[
+    \hat{f}(n) = \begin{cases}
+        \frac{1}{2\pi}\int_{-\pi}^\pi dx & 
+        \text{there is some } |m| \leq N, m = n \\
+        0 & \text{otherwise}
+    \end{cases} = \begin{cases}
+        1 & |n| \leq N \\
+        0 & |n| \geq N
+    \end{cases}
+\]
+which corresponds to the Fourier series
+\[
+    f(x) = \sum_{n \in \Z} \hat{f}(n)e^{inx} = \sum_{n = -N}^N e^{inx}  
+\]
+Therefore, proven.
+\end{proof}
+
+% QUESTION 2
+\section{}
+
+\begin{enumerate}[label=(\alph*)]
+    \item Let $f(\theta) = |\theta|$ on $[-\pi, \pi]$.
+    \item Show that
+\[
+\hat{f}(n) = \begin{cases}
+\frac{\pi}{2}, & n = 0 \\
+\frac{-1 + (-1)^n}{\pi n^2}, & n \neq 0.
+\end{cases}
+\]
+
+    \item Since $\sum_{n} |\hat{f}(n)| < \infty$, we will see in class that
+\[
+f(\theta) = \sum_{n \in \mathbb{Z}} \hat{f}(n) e^{in\theta}.
+\]
+    \item Write the Fourier series of $f$ in terms of sine and cosine.
+
+    \item By taking $\theta = 0$, show that
+\[
+\sum_{n=0}^{\infty} \frac{1}{(2n+1)^2} = \frac{\pi^2}{8},
+\]
+\[
+\sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}.
+\]
+Note that
+\[
+\sum_{n=1}^{\infty} \frac{1}{(2n)^2} = \frac{1}{4} \sum_{n=1}^{\infty} \frac{1}{n^2}.
+\]
+\end{enumerate}
+
+\begin{proof}
+\textit{(b).} For $n = 0$, we have
+\[
+    \hat{f}(0) = \frac{1}{2\pi}\int_{-\pi}^\pi |x|e^{-i0x}dx
+    = \frac{1}{2\pi}\int_{-\pi}^\pi |x|dx
+    = \frac{\pi}{2}
+\]
+and for $n \neq 0$, we have
+\begin{align*}
+    \hat{f}(n)
+    &= \frac{1}{2\pi}\int_{-\pi}^\pi |x|e^{-inx}dx \\
+    &= \frac{1}{2\pi}\left(\int_{0}^\pi xe^{-inx}dx - 
+    \int_{-\pi}^0 xe^{-inx}dx\right) \\
+    &= \frac{1}{2\pi}\left(\int_{0}^\pi xe^{-inx}dx + 
+    \int_0^\pi xe^{inx}dx\right) \\
+    &= \frac{1}{\pi}\int_0^\pi x\cos(nx) dx \\
+    &= \frac{1}{\pi}\left(\left.\frac{x\sin(nx)}{n}\right|_0^\pi 
+    - \int_0^\pi \frac{\sin(nx)}{n}dx\right) \\
+    &= \frac{1}{\pi}\left(\left.\frac{\cos(nx)}{n^2}\right|_0^\pi\right) \\
+    &= \frac{-1 + (-1)^n}{\pi n^2}
+\end{align*}
+Thus the formula for $\hat{f}(n)$ is proven.
+
+\textit{(d).} By (c), we have
+\begin{align*}
+    f(\theta) 
+    &= \sum_{n \in \mathbb{Z}} \hat{f}(n) e^{in\theta} \\
+    &= \sum_{n \in \mathbb{Z}} \hat{f}(n) \cos n\theta +
+    i\sum_{n \in \mathbb{Z}} \hat{f}(n)\sin n\theta \\
+    &= \frac{\pi}{2} + \sum_{n \neq 0} 
+    \frac{-1 + (-1)^n}{\pi n^2}\cos n\theta +
+    i\sum_{n \neq 0} \frac{-1 + (-1)^n}{\pi n^2}\sin n\theta \\
+    &= \frac{\pi}{2} 
+    + 2\sum_{n = 1}^\infty \frac{-1 + (-1)^n}{\pi n^2}\cos n\theta
+\end{align*}
+
+\textit{(e).} Substituting $\theta = 0$ to the above, we get
+\[
+    \sum_{n = 1}^\infty \frac{1 - (-1)^n}{n^2} = \frac{\pi^2}{4}
+\]
+The terms of the series above for even $n$ are zero, so this just becomes
+\[
+    \sum_{n = 1}^\infty \frac{1}{(2n + 1)^2} = \frac{\pi^2}{8}
+\]
+We now decompose the absolutely convergent series 
+$\sum_{n = 1}^\infty 1/n^2$ in the following way
+\[
+    \sum_{n = 1}^\infty \frac{1}{n^2} = 
+    \sum_{n = 1}^\infty \frac{1}{(2n)^2} 
+    + \sum_{n = 1}^\infty \frac{1}{(2n + 1)^2} 
+    = \frac{1}{4}\sum_{n = 1}^\infty \frac{1}{n^2} 
+    + \sum_{n = 1}^\infty \frac{1}{(2n + 1)^2}
+\]
+We thus have the following:
+\[
+    \frac{3}{4}\sum_{n = 1}^\infty \frac{1}{n^2} 
+    = \sum_{n = 1}^\infty \frac{1}{(2n + 1)^2} = \frac{\pi^2}{8}
+    \longimplies \sum_{n = 1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}
+\]
+\end{proof}
+
+% QUESTION 3
+\section{}
+
+Let $F_N(x)$ be the Fej\'er kernel from class,
+\[
+F_N(x) = \frac{1}{N} \sum_{n=0}^{N-1} D_n(x), \quad D_N(x) = \sum_{n=-N}^{N} e^{inx}.
+\]
+\begin{enumerate}[label=(\alph*)]
+    \item Show that
+\[
+F_N(x) = \frac{1}{N} \frac{\sin^2(Nx/2)}{\sin^2(x/2)}.
+\]
+
+\item Show that
+\[
+\frac{1}{2\pi} \int_{-\pi}^{\pi} F_N(x) \,dx = 1,
+\]
+and that
+\[
+\int_{|x| > \delta} F_N(x) \,dx \to 0 \quad \text{as } N \to \infty.
+\]
+That is, $F_N(x)$ is an approximate identity in the sense discussed in class.
+
+\item Suppose that $f: [-\pi, \pi] \to \mathbb{R}$ is continuous except at a point $\theta_0 \in (-\pi, \pi)$, where it has left and right limits $f(\theta_0^-)$ and $f(\theta_0^+)$ respectively. Show that
+\[
+\lim_{N \to \infty} (f * F_N)(\theta_0) = \frac{f(\theta_0^+) + f(\theta_0^-)}{2},
+\]
+where $(f * g)(x) := \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x - y) g(y) \,dy$.
+\end{enumerate}
+
+\begin{proof}
+\textit{(a).} Note that $D_n(x) = \sin((n + 1/2)x)/\sin(x/2)$ by
+problem 1. We then have the following:
+\begin{align*}
+    \sum_{n = 0}^{N - 1} D_n(x)
+    &= \frac{1}{\sin(x/2)}\sum_{n = 0}^{N - 1} \sin((n + 1/2)x) \\
+    &= \frac{1}{\sin(x/2)}
+    \Im\left(\sum_{n = 0}^{N - 1} e^{i(n + 1/2)x}\right) \\
+    &= \frac{1}{\sin(x/2)} \Im\left(e^{ix/2}
+    \frac{e^{iNx} - 1}{e^{ix} - 1}\right) \\
+    &= \frac{1}{\sin(x/2)} \Im\left(e^{iNx/2}
+    \frac{e^{iNx/2} - e^{-iNx/2}}{e^{ix/2} - e^{-ix/2}}\right) \\
+    &= \frac{1}{\sin(x/2)} \Im\left(e^{iNx/2}
+    \frac{\sin(Nx/2)}{\sin(x/2)}\right) \\
+    &= \frac{\sin^2(Nx/2)}{\sin^2(x/2)}
+\end{align*}
+Hence the formula for $F_N$ is proven.
+
+\textit{(b).} For the first one, we have
+\begin{align*}
+    \frac{1}{2\pi} \int_{-\pi}^{\pi} F_N(x) \,dx
+    &= \frac{1}{2N\pi}
+    \sum_{n=0}^{N-1} \sum_{m=-n}^{n} \int_{-\pi}^{\pi} e^{imx} \,dx \\
+    &= \frac{1}{2N\pi}\sum_{n=0}^{N-1} \left(
+    \int_{-\pi}^{\pi} dx + \sum_{m=-n, m \neq 0}^{n} 
+    \int_{-\pi}^{\pi} e^{imx} \,dx\right) \\
+    &= \frac{1}{2N\pi}\sum_{n=0}^{N-1} \left(2\pi 
+    + \sum_{m=-n, m \neq 0}^{n} 
+    \left.\frac{e^{imx}}{im} \right|_{-\pi}^{\pi}\right) \\
+    &= 1
+\end{align*}
+
+Let $0 < \delta < \pi$.
+Notice that $F_N(x)$ is bounded above by $\frac{1}{N}\csc^2(x/2)$. $\csc$
+is continuous on the compact subset $[-\pi, -\delta] \cup [\delta, \pi]$.
+The upper bound $\frac{1}{N}\csc^2(x/2)$ then converges to 0 uniformly
+so the integral (which is positive) 
+\[
+    \int_{|x| > \delta} F_N(x)dx \to \int_{|x| > \delta} 0dx = 0
+\]
+
+\textit{(c).} We first note that $F_N$ is an even function, so 
+$\frac{1}{2\pi}\int_0^\pi F_N(x)dx = \frac{1}{2}$.
+The convolution $(f * F_N)(\theta_0)$ is
+\[
+    (f * F_N)(\theta_0) 
+    = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(\theta_0 - y) F_N(y) \,dy
+\]
+Given $\varepsilon > 0$, we take $\delta > 0$ such that 
+$|f(\theta_0 - y) - f(\theta_0^+)| < \varepsilon$ for 
+$y \in (-\delta, 0)$ and 
+$|f(\theta_0 - y) - f(\theta_0^-)| < \varepsilon$ for
+$y \in (0, \delta)$. This prompts us to rewrite the convolution as
+\[
+    (f * F_N)(\theta_0) 
+    = \frac{1}{2\pi} \int_{|y| \geq \delta} f(\theta_0 - y) F_N(y) \,dy
+    + \frac{1}{2\pi} \int_0^{\delta} f(\theta_0 - y) F_N(y) \,dy
+    + \frac{1}{2\pi} \int_{-\delta}^0 f(\theta_0 - y) F_N(y) \,dy
+\]
+Given a bound $M > 0$ for the function $f$, the first integral can be 
+bounded between multiples of\\ $\int_{|x| > \delta} F_N(x)dx$ which
+converges to 0 as $N \to \infty$. The second one can be bounded
+in the following way:
+\begin{align*}
+    \frac{1}{2\pi} \int_0^{\delta} 
+    (f(\theta_0^-) - \varepsilon) F_N(y) \,dy &\leq
+    \frac{1}{2\pi} \int_0^{\delta} f(\theta_0 - y) F_N(y) \,dy
+    \leq \frac{1}{2\pi} \int_0^{\delta} 
+    (f(\theta_0^-) + \varepsilon) F_N(y) \,dy \\
+    \longimplies
+    (f(\theta_0^-) - \varepsilon)\frac{1}{2\pi} 
+    \int_0^{\delta} F_N(y) \,dy &\leq
+    \frac{1}{2\pi} \int_0^{\delta} f(\theta_0 - y) F_N(y) \,dy
+    \leq (f(\theta_0^-) + \varepsilon)\frac{1}{2\pi} 
+    \int_0^{\delta} F_N(y) \,dy \\
+\end{align*}
+As $N \to \infty$, $\frac{1}{2\pi}\int_0^{\delta} F_N(y) \,dy 
+\to \frac{1}{2}$ as a consequence of (b). We thus have
+\[
+    \frac{f(\theta_0^-) - \varepsilon}{2} \leq
+    \frac{1}{2\pi} \int_0^{\delta} f(\theta_0 - y) F_N(y) \,dy
+    \leq \frac{f(\theta_0^-) + \varepsilon}{2} 
+\]
+Similarly, we get the following bound for the third integral:
+\[
+    \frac{f(\theta_0^+) - \varepsilon}{2} \leq
+    \frac{1}{2\pi} \int_0^{\delta} f(\theta_0 - y) F_N(y) \,dy
+    \leq \frac{f(\theta_0^+) + \varepsilon}{2} 
+\]
+We thus have that $\lim_{N \to \infty}(f * F_N)(\theta_0)$ is bounded
+between $\frac{f(\theta_0^+) + f(\theta_0^-)}{2} - \varepsilon$
+and $\frac{f(\theta_0^+) + f(\theta_0^-)}{2} + \varepsilon$, so
+taking $\varepsilon \to 0$, we get
+\[
+    \lim_{N \to \infty} (f * F_N)(\theta_0) = \frac{f(\theta_0^+) + f(\theta_0^-)}{2}
+\]
+\end{proof}
+
+% QUESTION 4
+\section{}
+
+Let $f: \mathbb{R} \to \mathbb{R}$ be $2\pi$-periodic such that $|f(x+h) - f(x)| \leq |h|^\alpha$ for all $x \in \mathbb{R}$ and $h \in \mathbb{R}$ for some $0 < \alpha < 1$. Show that
+\[
+|\hat{f}(n)| \leq C |n|^{-\alpha}
+\]
+for some $C > 0$.
+
+\begin{proof}
+For any $x \in \R$ and nonzero $k \in \Z$, we have
+\begin{align*}
+    \pi^\alpha|k|^{-\alpha}
+    &\geq |f(x + \pi/k) -  f(x)| \\ 
+    &= \left|\sum_{n \in \Z}\hat{f}(n)e^{in(x + \pi/k)}
+    - \sum_{n \in \Z}\hat{f}(n)e^{inx}\right| \\
+    &= \left|\sum_{n \in \Z}\hat{f}(n)e^{inx}
+    \left(e^{i\pi n/k} - 1\right)\right| \\
+\end{align*}
+Note the following integral identity:
+\[
+    \int_{-\pi}^\pi e^{-ikx}\sum_{n \in \Z}\hat{f}(n)e^{inx}
+    \left(e^{i\pi n/k} - 1\right)dx
+    = \sum_{n \in \Z}\hat{f}(n)\left(e^{i\pi n/k} - 1\right)
+    \int_{-\pi}^\pi e^{i(n - k)x}dx = -4\pi\hat{f}(k)
+\]
+We can now bound $|\hat{f}(k)|$:
+\begin{align*}
+    |\hat{f}(k)|
+    &= \frac{4}{\pi}
+    \left|\int_{-\pi}^\pi e^{-ikx}\sum_{n \in \Z}\hat{f}(n)e^{inx}
+    \left(e^{i\pi n/k} - 1\right)dx\right| \\
+    &\leq \frac{4}{\pi}
+    \int_{-\pi}^\pi \left|e^{-ikx}\sum_{n \in \Z}\hat{f}(n)e^{inx}
+    \left(e^{i\pi n/k} - 1\right)\right|dx \\
+    &\leq 4\pi^{\alpha - 1}|k|^{-\alpha}
+    \int_{-\pi}^\pi \left|e^{-ikx}\right|dx \\
+    &= 4\pi^{\alpha - 1}|k|^{-\alpha}
+    \int_{-\pi}^\pi dx \\
+    &= 8\pi^{\alpha}|k|^{-\alpha}
+\end{align*}
+Therefore proven.
+\end{proof}
+
+
+% QUESTION 5
+\section{}
+
+Let
+\[
+V_n(x) := (1 + e^{inx} + e^{-inx}) F_n(x).
+\]
+\begin{enumerate}[label=(\alph*)]
+\item Check that $\hat{V}_n(k) = 1$ for $|k| \leq n$. Show that $\|V_n'\|_1 \leq Cn$ for some $C > 0$ independent of $n$.
+
+\item Suppose that $f$ is a trigonometric polynomial with $\hat{f}(k) = 0$ for $|k| > n$. Show that
+\[
+\|f'\|_1 \leq Cn \|f\|_1.
+\]
+Hint: Show that $f = V_n * f$, that $f' = V_n' * f$, and that $\|f * g\|_1 \leq \|f\|_1 \|g\|_1$ for any $f, g$.
+\end{enumerate}
+
+\begin{proof}
+\textit{(a).} For $|k| \leq n$, we have
+\begin{align*}
+    \hat{V}_n(k)
+    &= \frac{1}{2\pi}\int_{-\pi}^\pi 
+    e^{-ikx}(1 + e^{inx} + e^{-inx}) F_n(x)dx \\
+    &= \frac{1}{2n\pi}\sum_{m=0}^{n-1} 
+    \sum_{j=-m}^{m}\int_{-\pi}^\pi 
+    e^{-ikx}(1 + e^{inx} + e^{-inx}) e^{ijx}dx \\
+    &= \frac{1}{2n\pi}\sum_{m=0}^{n-1} 
+    \sum_{j=-m}^{m}\int_{-\pi}^\pi 
+    (e^{-i(k - j)x} + e^{i(n + j - k)x} + e^{-i(n - j + k)x})dx \\
+    &= \frac{1}{n}\sum_{m=0}^{n-1}\sum_{j=-m}^{m}
+    (\chi[j = k] + \chi[j = k - n] + \chi[j = k + n])
+\end{align*}
+where $\chi[P]$, the indicator function, is 1 if $P$ holds and 0 otherwise. 
+We now try evaluating that sum for each indicator separately:
+\begin{align*}
+    \sum_{m=0}^{n-1}\sum_{j=-m}^{m}\chi[j = k] 
+    &= \sum_{m=|k|}^{n-1}\sum_{j=-m}^{m}\chi[j = k] 
+    = \sum_{m=|k|}^{n-1} 1 
+    = n - |k| \\
+    \sum_{m=0}^{n-1}\sum_{j=-m}^{m}\chi[j = k - n]
+    &=  \sum_{m=0}^{n-1}\sum_{j=n-m}^{n+m}\chi[j = k] \\
+    &= \begin{cases}
+        \sum_{m=n - k}^{n-1}\sum_{j=n-m}^{n+m}\chi[j = k] & k > 0\\
+        0 & k \leq 0
+    \end{cases} \\
+    &= \begin{cases}
+        k & k > 0\\
+        0 & k \leq 0
+    \end{cases} \\
+    \sum_{m=0}^{n-1}\sum_{j=-m}^{m}\chi[j = k + n]
+    &=  \sum_{m=0}^{n-1}\sum_{j=-n-m}^{-n+m}\chi[j = k] \\
+    &= \begin{cases}
+        \sum_{m=n + k}^{n-1}\sum_{j=-n-m}^{-n+m}\chi[j = k] & k < 0\\
+        0 & k \geq 0
+    \end{cases} \\
+    &= \begin{cases}
+        -k & k < 0\\
+        0 & k \geq 0
+    \end{cases}
+\end{align*}
+Adding all of these, we obtain
+\[
+    \sum_{m=0}^{n-1}\sum_{j=-m}^{m}
+    (\chi[j = k] + \chi[j = k - n] + \chi[j = k + n]) = n
+\]
+and hence $\hat{V}_n(k) = 1$.
+
+We write $V_n(x) = (1 + e^{inx} + e^{-inx})
+\frac{\sin^2(nx/2)}{n\sin^2(x/2)}$ and compute its derivative:
+\[
+    V'_n(x) = (ine^{inx} - ine^{-inx})F_n(x) 
+    + (1 + e^{inx} + e^{-inx}) F_n'(x)
+\]
+Thus we have 
+\[
+    \norm{V'_n}_1 \leq 2n\norm{F_n}_1 + 3\norm{F_n'}_1
+\]
+Since $F_n(x) \geq 0$ (by Question 2) and 
+$\int_{-\pi}^\pi F_n(x)dx = 2\pi$, we have $\norm{F_n}_1 = 2\pi$.
+For the norm of $F_n'$, we note that $F_n$ is a trigonometric 
+polynomial with coefficients bounded by 1, we have that 
+$|F_n'(x)| \leq n(n + 1) \leq An^2$ for some $A > 0$, where 
+$A$ is independent of $n$. The derivative of $F_n$ is
+\[
+    F'_n(x) = \frac{\sin(nx/2)\cos(nx/2)}{\sin^2(x/2)} 
+    - \frac{\sin^2(nx/2)\cos(x/2)}{n\sin^3(x/2)}
+\]
+Since $|\sin x| \leq |x|$ for all $x$, $|\sin x| \geq \pi|x|/2$ 
+for all $|x| < \pi/2$, and sine and cosine is bounded above by 1, we have
+\[
+    |F'_n(x)| \leq \frac{1}{\pi^2x^2/4}
+    + \frac{n|x|/2}{n\pi^3|x|^3/8} = \frac{4}{\pi^2x^2}
+    + \frac{4}{\pi^3x^2} = \frac{B}{x^2}
+\]
+for $x \in [-\pi, \pi]$ and some constant $B > 0$ independent of $n$.
+Then $\norm{F'_n}_1$ can be bounded in the following way
+\begin{align*}
+    \norm{F'_n}_1 = \int_{-\pi}^\pi |F'_n(x)|dx
+    &= \int_{|x| \leq 1/n} |F'_n(x)|dx 
+    + \int_{|x| \geq 1/n} |F'_n(x)|dx \\
+    &\leq \int_{|x| \leq 1/n} An^2dx 
+    + \int_{|x| \geq 1/n} \frac{B}{x^2}dx \\
+    &= 2An + \frac{-2B}{x}\bigg|_{1/n}^\pi \\
+    &= 2(A + B)n + \frac{-2B}{\pi}
+\end{align*}
+This means that for some constant $c > 0$ that depends only on 
+$A$ and $B$ (i.e. $c$ is independent of $n$), we have 
+$\norm{F'_n}_1 \leq cn$. We thus have the bound
+\[
+    \norm{V'_n}_1 \leq 2n\norm{F_n}_1 + 3\norm{F_n'}_1 \leq 
+    4\pi n + 3cn = Cn
+\]
+for a constant $C > 0$ independent of $n$.
+
+\textit{(b).}
+Write $f(x) = \sum_{k = -n}^n \hat{f}(k)e^{ikx}$. To show that 
+$f = V_n * f$, it suffices to show that their Fourier coefficients
+are equal. For $|k| \leq n$, we have
+\[
+    \widehat{V_n * f}(k) = \hat{V_n}(k)\hat{f}(k) = \hat{f}(k)
+\]
+and for $|k| > n$,
+\[
+    \widehat{V_n * f}(k) = \hat{V_n}(k)\hat{f}(k) = 0 = \hat{f}(k)
+\]
+Thus $f = V_n * f$. Differentiating this equation, we get
+\begin{align*}
+    f'(x)
+    &= \frac{d}{dx}\frac{1}{2\pi}\int_{-\pi}^\pi 
+    V_n(x - y)f(y) dy \\
+    &= \frac{1}{2\pi}\int_{-\pi}^\pi \frac{\partial}{\partial x}
+    V_n(x - y)f(y) dy \\
+    &= \frac{1}{2\pi}\int_{-\pi}^\pi 
+    V_n'(x - y)f(y) dy \\
+    &= V_n' * f(x)
+\end{align*}
+thus $f' = V_n' * f$. 
+The 1-norm of the right hand side of this can be bounded
+\begin{align*}
+    \norm{V_n' * f}_1
+    &= \int_{-\pi}^\pi |V_n' * f(x)|dx \\
+    &= \int_{-\pi}^\pi \left|\frac{1}{2\pi}\int_{-\pi}^\pi 
+    V_n'(x - y)f(y) dy\right|dx \\
+    &\leq \frac{1}{2\pi}\int_{-\pi}^\pi \int_{-\pi}^\pi 
+    \left|V_n'(x - y)f(y)\right|dydx \\
+    &= \frac{1}{2\pi}\int_{-\pi}^\pi \int_{-\pi}^\pi 
+    \left|V_n'(x - y)f(y)\right|dxdy \\
+    &= \frac{1}{2\pi}\int_{-\pi}^\pi \int_{-\pi - y}^{\pi - y} 
+    \left|V_n'(t)f(y)\right|dtdy \\
+    &\leq \frac{1}{2\pi}\int_{-\pi}^\pi \int_{-\pi}^{\pi} 
+    \left|V_n'(t)f(y)\right|dtdy \\
+    &= \frac{1}{2\pi}\int_{-\pi}^\pi 
+    \left|V_n'(t)\right|dt\int_{-\pi}^{\pi} 
+    \left|f(y)\right|dy \\
+    &\leq \norm{V_n'}_1\norm{f}_1
+\end{align*}
+By part (a), we obtain the following bound for the norm of $f'$:
+\[
+    \norm{f'}_1 \leq Cn\norm{f}_1
+\]
+\end{proof}
+
+%QUESTION 6
+\section{}
+
+Continuing with notation from the previous problem, also for any $s > 0$ define the \textquotedblleft norm\textquotedblright (explain why this is not a norm):
+\[
+\|f\|_{H^s}^2 := |\hat{f}(0)|^2 + \sum_{n \in \mathbb{Z}} |n|^{2s} |\hat{f}(n)|^2.
+\]
+For $0 < \alpha < 1$ define
+\[
+\|f\|_{C^\alpha} := \sup_{x,h} \frac{|f(x+h) - f(x)|}{|h|^\alpha} + \sup_x |f(x)|.
+\]
+
+In this problem, we will prove a version of the Sobolev embedding theorem via a discrete version of Littlewood-Paley theory.
+\begin{enumerate}[label=(\alph*)]
+    \item  Let
+\[
+\varphi_j(x) = V_{2^{j-1}}(x)\left(e^{i 3 \cdot 2^{j-1} x} + e^{-i 3 \cdot 2^{j-1} x}\right).
+\]
+Check that $\hat{\varphi}_j(n) = 1$ for $2^j \leq |n| \leq 2^{j+1}$ and that $\hat{\varphi}(0) = 0$, which is the same as
+\[
+\int_{-\pi}^{\pi} \varphi_j(x) \,dx = 0.
+\]
+
+\item Show that
+\[
+|\varphi_j(x)| \leq C \frac{1}{2^j} \min(2^{2j}, |x|^{-2}).
+\]
+Hint: similar bounds hold for $F_n(x)$.
+
+\item Show that
+\[
+\sum_{2^j \leq |n| \leq 2^{j+1}} |\hat{f}(n)|^2 \leq \int |(\varphi_j * f)(x)|^2 \,dx.
+\]
+
+\item Show that
+\[
+    |(\varphi_j * f)(x)| = \frac{1}{2\pi}\left|\int_{-\pi}^\pi
+    \varphi_j(y)(f(x - y) - f(x))dy\right| 
+    \leq C\norm{f}_{C^\alpha}2^{-\alpha j}
+\]
+Conclude that 
+\[
+    \sum_{2^j \leq |n| \leq 2^{j+1}} |\hat{f}(n)|^2 
+    \leq C\norm{f}^2_{C^\alpha}2^{-2\alpha j}
+\]
+
+\item Let $0 < \alpha < 1$ and let $\beta < \alpha$. 
+Show that there is a $C_{\alpha, \beta}$ s.t.
+\[
+    \norm{f}_{H^\beta} \leq C_{\alpha, \beta}\norm{f}_\alpha
+\]
+This is a version of the \textit{Sobolev embedding theorem}. 
+The idea of splitting up the Fourier coefficients into dyadic 
+blocks (of comparable frequencies) is known as
+Littlewood-Paley theory and has many applications.
+
+\item Conclude that if $f \in C^\alpha$ for $\alpha > \frac{1}{2}$, then
+\[
+\sum_n |\hat{f}(n)| < \infty.
+\]
+\end{enumerate}
+
+\begin{proof}
+\textit{(a).} Let $2^j \leq |n| \leq 2^{j + 1}$. We now compute the
+Fourier coefficient $\hat{\varphi}_j(n)$:
+\begin{align*}
+    \hat{\varphi}_j(n)
+    &= \frac{1}{2\pi}\int_{-\pi}^\pi e^{-inx}
+    V_{2^{j-1}}(x)\left(e^{i 3 \cdot 2^{j-1} x} 
+    + e^{-i 3 \cdot 2^{j-1} x}\right) dx \\
+    &= \hat{V}_{2^{j-1}}\left(n - 3 \cdot 2^{j-1}\right)
+    + \hat{V}_{2^{j-1}}\left(n + 3 \cdot 2^{j-1}\right)
+\end{align*}
+Note that $V_{2^{j - 1}}$ is a trigonometric polynomial of
+degree $2^j - 1$
+If $n > 0$ then $n + 3 \cdot 2^{j-1} \geq 2^j + 3 \cdot 2^{j-1} 
+> 2^{j + 1}$, so the coefficient 
+$\hat{V}_{2^{j-1}}\left(n + 3 \cdot 2^{j-1}\right) = 0$. On the 
+other hand, we have $2^j \leq n \leq 2^{j + 1} \implies
+-2^{j - 1} \leq n - 3 \cdot 2^{j - 1} \leq 2^{j - 1}$, so
+by Question 5, the coefficient 
+$\hat{V}_{2^{j-1}}\left(n + 3 \cdot 2^{j-1}\right) = 1$. Hence
+$\hat{\varphi}_j(n) = 1$. The case $n < 0$ is handled almost identically.
+
+For $n = 0$, we have
+\[
+    \hat{\varphi}_j(0) = \hat{V}_{2^{j-1}}\left(-3 \cdot 2^{j-1}\right)
+    + \hat{V}_{2^{j-1}}\left(3 \cdot 2^{j-1}\right)
+\]
+and since $|3 \cdot 2^{j-1}| > 2^j$ and $V_{2^{j - 1}}$ is a 
+trigonometric polynomial is of degree $2^{j - 1} - 1$.
+Thus both of the coefficients in the sum above are 0.
+Hence, $\hat{\varphi}_j(0) = 0$.
+
+\textit{(b).}
+Notice that $|\varphi_j(x)|$ can be bounded above in the following way:
+\[
+    |\varphi_j(x)| \leq 6|F_{2^{j - 1}}(x)|
+\]
+$F_{2^{j - 1}}$ is a trigonometric polynomial of degree $2^{j - 1} - 1$
+with coefficients bounded by 1, so $|F_{2^{j - 1}}(x)|
+\leq 2^j$ (remember to take negative terms into account), hence
+\[
+    |\varphi_j(x)| \leq 6\frac{1}{2^{j}}2^{2j}
+\]
+On the other hand, we have
+\[
+    |F_{2^{j - 1}}(x)| = \frac{1}{2^{j - 1}}
+    \frac{\sin^2(2^{j - 1}x/2)}{\sin^2(x/2)} 
+    \leq \frac{1}{2^{j - 1}}\frac{1}{x^2/\pi^2} 
+    = \frac{\pi^2}{2^{j - 1}}|x|^{-2}
+\]
+Thus, we have
+\[
+    |\varphi_j(x)| \leq 12\pi^2\frac{1}{2^j}|x|^{-2}
+\]
+Hence, for some constant $C > 0$ (independent of $j$),
+we have $|\varphi_j(x)| \leq C \frac{1}{2^j} \min(2^{2j}, |x|^{-2})$.
+
+\textit{(c).} I'm speechless.
+\begin{align*}
+    \int_{-\pi}^\pi|\varphi_j * f(x)|^2 dx
+    &\geq \frac{1}{2\pi}\int_{-\pi}^\pi|\varphi_j * f(x)|^2 dx \\
+    &= \frac{1}{2\pi}\int_{-\pi}^\pi
+    \left(\sum_n \hat{\varphi}_j(n)\hat{f}_j(n)e^{inx}\right)
+    \cj{\left(\sum_m \hat{\varphi}_j(m)\hat{f}_j(m)e^{imx}\right)}dx \\
+    &= \sum_{n,m}\frac{1}{2\pi}\int_{-\pi}^\pi
+    \left(\hat{\varphi}_j(n)\hat{f}_j(n)\right)
+    \cj{\left(\hat{\varphi}_j(m)\hat{f}_j(m)\right)}e^{i(n - m)x}dx \\
+    &= \sum_{n}\left(\hat{\varphi}_j(n)\hat{f}_j(n)\right)
+    \cj{\left(\hat{\varphi}_j(n)\hat{f}_j(n)\right)} \\
+    &= \sum_{n} |\hat{\varphi}_j(n)|^2|\hat{f}_j(n)|^2
+\end{align*}
+We then have
+\[
+    \sum_{2^j \leq |n| \leq 2^{j+1}} |\hat{f}(n)|^2 
+    = \sum_{2^j \leq |n| \leq 2^{j+1}} 
+    |\hat{\varphi}_j(n)|^2|\hat{f}(n)|^2 
+    \leq \sum_{n} 
+    |\hat{\varphi}_j(n)|^2|\hat{f}(n)|^2 
+    \leq \int_{-\pi}^\pi|\varphi_j * f(x)|^2 dx
+\]
+
+\textit{(d).} Still speechless
+\begin{align*}
+    |(\varphi_j * f)(x)| 
+    &= \frac{1}{2\pi}\left|\int_{-\pi}^\pi
+    \varphi_j(y)f(x - y)dy - f(x)\int_{-\pi}^\pi
+    \varphi_j(y)dy\right| \\
+    &= \frac{1}{2\pi}\left|\int_{-\pi}^\pi
+    \varphi_j(y)(f(x - y) - f(x))dy\right| \\
+    &\leq \frac{1}{2\pi}\int_{-\pi}^\pi
+    |\varphi_j(y)|\cdot|y|^\alpha\norm{f}_\alpha dy \\
+    &= \frac{1}{\pi}\int_{0}^{1/2^j}
+    |\varphi_j(y)|\cdot|y|^\alpha\norm{f}_\alpha dy
+    + \frac{1}{\pi}\int_{1/2^j}^\pi
+    |\varphi_j(y)|\cdot|y|^\alpha\norm{f}_\alpha dy \\
+    &\leq \frac{C\norm{f}_\alpha}{2^j\pi}\int_{0}^{1/2^j}
+    2^{2j}|y|^\alpha dy
+    + \frac{C\norm{f}_\alpha}{2^j\pi}\int_{1/2^j}^\pi
+    |y|^{\alpha - 2} dy \\
+    &= \frac{C\norm{f}_\alpha}{\pi}
+    \frac{2^{-j\alpha}}{\alpha + 1}
+    + \frac{C\norm{f}_\alpha}{2^j\pi}
+    \left(\frac{\pi^{\alpha - 1}}{\alpha - 1}
+    - \frac{2^{-j(\alpha - 1)}}{\alpha - 1}\right) \\
+    &= \frac{C\norm{f}_\alpha}{\pi}
+    \frac{2^{-j\alpha}}{\alpha + 1}
+    - \frac{C\norm{f}_\alpha}{2^j\pi}\frac{\pi^{\alpha - 1}}{1 - \alpha}
+    + \frac{C\norm{f}_\alpha}{\pi}\frac{2^{-j\alpha}}{1 - \alpha} \\
+    &\leq C'\norm{f}_\alpha 2^{-j\alpha}
+\end{align*}
+Thus
+\begin{align*}
+    \sum_{2^j \leq |n| \leq 2^{j+1}} |\hat{f}(n)|^2
+    &\leq \frac{1}{2\pi}\int_{-\pi}^\pi|\varphi_j * f(x)|^2 dx \\
+    &\leq \frac{1}{2\pi}\int_{-\pi}^\pi
+    C'^2\norm{f}^2_\alpha 2^{-2j\alpha} dx \\
+    &= C\norm{f}^2_\alpha 2^{-2j\alpha}
+\end{align*}
+
+\textit{(e).}
+I no want write words.
+\begin{align*}
+    \norm{f}^2_{H^\beta}
+    &= |\hat{f}(0)|^2 + \sum_{n \neq 0}|n|^{2\beta}|\hat{f}(n)|^2 \\
+    &\leq |\hat{f}(0)|^2 + 
+    \sum_{j = 0}^\infty |2^{j + 1}|^{2\beta} 
+    \sum_{2^j \leq |n| \leq 2^{j + 1}} |\hat{f}(n)|^2 \\
+    &\leq |\hat{f}(0)|^2 + 
+    2^{2\beta}\sum_{j = 0}^\infty 2^{2j\beta}
+    C\norm{f}^2_\alpha 2^{-2j\alpha} \\
+    &= |\hat{f}(0)|^2 + 
+    2^{2\beta}C\norm{f}^2_\alpha
+    \sum_{j = 0}^\infty \left(4^{\beta - \alpha}\right)^j \\
+    &= |\hat{f}(0)|^2 + 
+    2^{2\beta}C\norm{f}^2_\alpha \frac{1}{1 - 4^{\beta - \alpha}} \\
+    &\leq C^2_{\alpha, \beta}\norm{f}^2_\alpha
+\end{align*}
+Thus
+\[
+    \norm{f}_{H^\beta} \leq C_{\alpha, \beta}\norm{f}_\alpha
+\]
+
+\textit{(f).}
+Let $\alpha > 1/2$ and pick $1/2 < \beta < \alpha$.
+Write $\sum_{n \neq 0} |\hat{f}(n)|$ as $\sum_{n \neq 0} |n|^{-\beta} 
+\cdot |n|^{\beta}|\hat{f}(n)|$, we apply Holder's inequality to get
+\[
+    \left(\sum_{n \neq 0} |\hat{f}(n)|\right)^2
+    \leq \left(\sum_{n \neq 0} |n|^{-2\beta}\right)
+    \left(\sum_{n \neq 0} |n|^{2\beta}|\hat{f}(n)|^2\right)
+    \leq \left(\sum_{n \neq 0} |n|^{-2\beta}\right)\norm{f}_{H^\beta}^2
+    \leq \left(\sum_{n \neq 0} |n|^{-2\beta}\right)
+    C_{\alpha, \beta}^2\norm{f}^2_\alpha
+\]
+The series in the latter expression converges since $2\beta > 1$, thus
+$\sum_{n \neq 0} |\hat{f}(n)| < \infty$.
+\end{proof}
+
+\end{document}

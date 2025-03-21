@@ -1,0 +1,198 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry} % margins
+\usepackage[justification=centering]{caption}
+%\usepackage{calrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amsthm}
+\usepackage{float}
+\usepackage{tikz-cd}
+\usepackage{ytableau}
+\usepackage{dsfont}
+
+\renewcommand{\implies}{\Rightarrow}
+\newcommand{\longimplies}{\Longrightarrow}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\renewcommand{\H}{\mathbb{H}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\Lf}{\mathbb{L}}
+\newcommand{\Sp}{\mathbb{S}}
+\newcommand{\cl}[1]{\overline{#1}}
+\renewcommand{\emptyset}{\varnothing}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\maxnorm}[1]{\left\|#1\right\|_{\text{max}}}
+\newcommand{\opnorm}[1]{\left\|#1\right\|_{\mathrm{op}}}
+\newcommand{\supnorm}[1]{\left\|#1\right\|_{\infty}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\sspan}{\operatorname{span}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\ch}{\operatorname{char}}
+\newcommand{\poly}{\mathrm{P}}
+\newcommand{\mtx}{\mathcal{M}}
+\newcommand{\seq}{\mathbf{Seq}}
+\newcommand{\vv}[1]{\mathbf{#1}}
+\newcommand{\dirsum}{\oplus}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\im}{\operatorname{im}}
+
+\newcommand{\cj}[1]{\overline{#1}}
+\newcommand{\inprod}[2]{\left\langle#1,#2\right\rangle}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+\newcommand{\res}{\operatorname{res}}
+
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+
+% Theorem environments
+\usepackage{amsthm}
+
+\theoremstyle{definition} % The "plain" style italicizes all body text.
+	\newtheorem{thm}{Theorem}
+		\numberwithin{thm}{section} % Theorem numbers are determined by section.
+	\newtheorem{lemma}[thm]{Lemma}
+	\newtheorem{prop}[thm]{Proposition}
+	\newtheorem{cor}[thm]{Corollary}
+	\newtheorem{conj}[thm]{Conjecture}
+
+\theoremstyle{definition} % The "definition" style does not italicize body text..
+    \newtheorem{defn}[thm]{Definition}
+	\newtheorem{example}[thm]{Example}
+    \newtheorem{exercise}[thm]{Exercise}
+
+\usepackage{mathtools}
+
+\usetikzlibrary{decorations.markings,positioning,decorations.text}
+
+\def\xr{5}
+\def\yr{5}
+
+%\usepackage{titlesec}
+%\titleformat{\section}[hang]{\normalfont\fontsize{14}{0}\bfseries}{Problem 8.\thesection\ }{0pt}{}
+
+\begin{document}
+
+\section{Week 10}
+
+\begin{defn}
+    If $E \in \mathcal{E}, f: E \to \cl{\R}$ then we say that $f$ is Lebesgue measurable if $f^{-1}(B)$ is Lebesgue measurable for all $B \in \mathcal{B}(\cl{\R})$.
+\end{defn}
+
+\begin{lemma}
+    If $f: E \to \cl{\R}$ and if we define
+    \[
+        \tilde{f}(x) = \begin{cases}
+            f(x) & x \in E \\
+            0 & x \notin E
+        \end{cases}  
+    \]
+    then $f$ is Lebesgue measurable if and only if $\tilde{f}$ is Lebesgue measurable.
+\end{lemma}
+\begin{proof}
+If $B \in \mathcal{B}(\cl{\R})$ then if $0 \notin B$, $f^{-1}(B) = \tilde{f}^{-1}(B)$ and if $0 \in B$ then $\tilde{f}^{-1}(B) = f^{-1}(B) \cup E^c$, hence $f^{-1}(B) = f^{-1}(B) \cap E$.
+\end{proof}
+
+\begin{defn}
+    We define $\mathds{1}_E(x) = \begin{cases}
+        1 & x \in E \\ 0 & x \notin E
+    \end{cases}$. If it is Lebesgue measurable then so is $E$.
+
+    If $E \in \mathcal{E}$ we say that $\varphi: E \to \cl{\R}$ is simple if $\varphi = \sum_{k = 1}^n \alpha_k \mathds{1}_{E_k}$ where $E_k \subseteq E$ are Lebesgue measurable and $\alpha_k \in \R$. 
+    
+    Note that you can always rewrite the representative so that the $E_k$ are disjoint and the $\alpha_k$'s are unique. This representatation is called canonical.
+\end{defn}
+
+\begin{lemma}
+    Let $f: E \to \R$ be a bounded Lebesgue measurable function with $E \in \mathcal{E}$, and let $\varepsilon > 0$. Then there exist simple functions $\varphi_\varepsilon$ and $\psi_\varepsilon$ such that $\varphi_\varepsilon \leq f \leq \psi_\varepsilon$ and $|\psi_\varepsilon(x) - \varphi_{\varepsilon}(x)| < \varepsilon$ for all $x \in E$. 
+\end{lemma}
+\begin{proof}
+Suppose that $M > |f(x)|$ for all $x \in E$. Let $y_i \in \R$ be an increasing sequence satisfying $y_1 = -M$ and $y_n = M$. Then we let $E_k = f^{-1}((y_k, y_{k + 1}))$ for all $1 \leq k \leq n - 1$. We set $\varphi = \sum_{k = 1}^{n - 1} y_k\mathds{1}_{E_k}$ and $\psi = \sum_{k = 1}^{n - 1} y_{k + 1}\mathds{1}_{E_k}$. By definition $\varphi \leq f \leq \psi$ and $|\varphi - \psi| \leq \max_k|y_{k + 1} - y_k|$. By choosing $y_k$ to be close enough, we get the second desired condition.
+\end{proof}
+
+\begin{thm}
+Let $f: E \to \cl{\R}$ be Lebesgue measurable. Then 
+\begin{enumerate}[label=(\roman*)]
+    \item If $f \geq 0$ then there exists an increasing sequence of simple functions $\varphi_n \geq 0$ such that $\lim_{n \to \infty} \varphi(x) = f(x)$ for all $x \in E$.
+    \item In general, there exists a sequence of simple functions $\varphi_n$ such that $\lim_{n \to \infty} \varphi_n(x) = f(x)$ and $|\varphi_n(x)| \leq |f(x)|$ for all $x \in E$.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+(ii) follows from (i) by writing $f = f_+ - f_-$ and finding simple $\psi_n, \chi_n$ that approximate $f_+, f_-$ in the way of (i) and defining $\varphi_n = \psi_n - \chi_n$. Since at most one of $f_+, f_-$ is non-zero at a given $x$, the same is the case for $\psi_n, \chi_n$ and hence the absolute value condition holds. The pointwise convergence obviously holds as well.
+
+For (i), if $f \geq 0$, if we set $f_n = \max\{f, n\}$ then by the previous lemma, there is an increasing sequence $\psi_n \leq f_n$ and $|f_n - \psi_n| < 1/n$ for all $n$. Then we take $\varphi_1 = \max\{\psi_1, 0\}$ and $\varphi_k = \max\{0, \psi_k, \varphi_{k - 1}\}$ for $k \geq 2$. By induction, we find that $\varphi_k$'s are step functions such that $0 \leq \varphi_k \leq \varphi_{k + 1} \leq f_k$, and $|f_k - \varphi_k| < 1/k$. With this we get $\varphi_n(x) \to f(x)$ for all $x \in E$.
+\end{proof}
+
+\begin{thm}[Egorov]
+    Let $f_n: E \to \R$ be a sequence of Lebesgue measurable functions converging pointwise to $f: E \to \R$. We also assume that $m(E) < \infty$. Then for all $\varepsilon > 0$, there is a closed set $F \subseteq E$ such that $m(E \setminus F) < \varepsilon$ and $f_n \to f$ converges uniformly on $F$ (i.e. for all $\delta > 0$ there is some $N$ such that $|f(x) - f_n(x)| < \delta$ for all $x \in F$ and $n \geq N$).
+\end{thm}
+
+\begin{lemma}
+    In the setting of the theorem, for all $u > 0$ and $\delta > 0$ there is some $A \subseteq E$ and an $N \geq 0$ such that $m(E \setminus A) < \delta$ and for all $x \in A$ and $n \geq N$ we have $|f_n(x) - f(x)| < u$.
+\end{lemma}
+\begin{proof}
+Set $E_n = \{x \in E: |f_n(x) - f(x)| < u, \forall k \geq n\} = \cap_{k = n}^\infty \{x: |f_k(x) - f(x)| < u\}$. Since $f_n \to f$ pointwise, $E = \cup_{n = 1}^\infty E_n$. Furthermore, $E_n$ are increasing ($E_n \subseteq E_{n + 1}$ for all $n$). We then have $m(E) = \lim_{n \to \infty} m(E_n)$. Since $m(E) < \infty$, there is some $N$ such that $|m(E) - m(E_N)| < \delta$, and hence $m(E \setminus E_N) = m(E) - m(E_N) < \delta$. Taking $A = E_N$ completes the proof.
+\end{proof}
+
+\begin{proof}[Proof (Egorov)]
+By the lemma, for all $n$ there is some $A_n$ such that $m(E \setminus A_n) < \varepsilon / 2^n$ and there exists $M(n)$ such that $|f(x) - f_k(x)| < 1/n$ for all $k \geq M(n)$. Setting $A = \cup_{n = 1}^\infty A_n$, we have
+\begin{align*}
+    m(E \setminus A) 
+    &= m(E \cap A^c) \\ 
+    &= m\left(E \cap \left(\bigcup_{n = 1}^\infty A_n^c\right)\right) \\
+    &= m\left(\bigcup_{n = 1}^\infty E \setminus A_n\right) \\
+    &\leq \sum_{n = 1}^\infty m(E \setminus A_n) \\
+    &\leq \sum_{n = 1}^\infty \frac{\varepsilon}{2^n} \\
+    &= \varepsilon
+\end{align*}
+Now if $x \in A$ then for all $n$, $x \in A_n$, so for all $k \geq M(n)$, we have $|f_k(x) - f(x)| < 1/n$. We thus see that $f_k \to f$ uniformly on $A$.
+
+We now take $F$ closed such that $m(A \setminus F) \leq \varepsilon$ with $F \subseteq A$ to get $m(E \setminus F) \leq m(E \setminus A) + m(A \setminus F) \leq 2\varepsilon$.
+\end{proof}
+
+\begin{thm}[Lusin]
+    Let $f: E \to \R$ be Lebesgue measurable with $m(E) < \infty$. Then for all $\varepsilon > 0$ there is a closed set $F$ and a continuous $g: F \to \R$ such that $m(E \setminus F) < \varepsilon$ and $f = g$ on $F$.
+\end{thm}
+
+\begin{prop}
+    Let $\varphi: E \to \R$ be a simple function and let $\varepsilon > 0$. Then there exists a closed $F \subseteq E$ and a continuous $g: \R \to \R$ such that $m(E \setminus F) < \varepsilon$ and $g = \varphi$ on $F$.
+\end{prop}
+\begin{proof}
+Write $\varphi = \sum_{k = 1}^\infty \alpha_k \mathds{1}_{E_k}$ with $E_k$ being disjoint. Take $F_k$ closed and bounded such that $F_k \subseteq E_k$ with $m(E_k \setminus F_k) < \varepsilon / n$. Since $F_k$'s are disjoint compact sets, we have $\delta = \min_{i \neq j}\inf_{x \in F_i, y \in F_j} |x - y| > 0$. For any set $A$, define $d(x, A) = \inf_{y \in A}|x - y|$.
+
+\begin{exercise}
+    Show that $x \mapsto d(x, A)$ is continuous.
+\end{exercise}
+\begin{proof}
+    TODO
+\end{proof}
+
+Let $\rho(x): \R_{\geq 0} \to \R$ as $1$ on $[0, \delta/3]$, 0 on $[2\delta/3, \delta]$, and linear on $[\delta/3, 2\delta/3]$ such that $\rho$ becomes connected. Define $g_i = \alpha_i \rho(d(x, F))$. Each $g_i$ is continuous and if $x \in F_i$ then $\rho(d(x, F_i)) = 1$ and if $x \in F_j$ for $j \neq i$ then $\rho(d(x, F_j)) = 0$ because $d(x, F_i) \geq \delta$. We then define $g(x) = \sum_{i = 1}^n g_i(x)$.
+
+Define $F = \bigcup_{n = 1}^\infty F_n$, and note that $g(x) = \varphi(x)$ for $x \in F$ and $m(E \setminus F) \leq \sum_{k = 1}^n m(E_k \setminus F_k) \leq n \varepsilon / n = \varepsilon$.
+
+\begin{lemma}
+    If $E$ has finite measure then for any $\varepsilon > 0$ there is some compact $K$ such that $m(E \setminus K) < \varepsilon$.
+\end{lemma}
+\begin{proof}
+Set $E_n = E \cap [-n, n]$. Then since $\bigcup_n E_n = E$ and $m(E) = \lim_{n \to \infty} m(E_n)$, we can find $E_k$ such that $m(E \setminus E_k) < \varepsilon$.
+\end{proof}
+
+Then take $F \subseteq E_k$ with $F$ closed and $m(E_k \setminus F) < \varepsilon \implies m(E \setminus F) \leq m(E \setminus E_k) - m(E_k \setminus F_k) \leq 2 \varepsilon$.
+\end{proof}
+
+\begin{proof}[Proof (Lusin)]
+Take $\varphi_n$ simple functions such that $\varphi$ converge to $f$ pointwise and let $g_n$ be a sequence of continuous functions such that $g_n = \varphi_n$ on a closed set $F_k$ with $m(E \setminus F_n) \leq \varepsilon / 2^n$. By Egorov, there is a closed $G \subseteq E$ with $m(E \setminus G) < \varepsilon$ such that $\varphi_n \to f$ uniformly on $G$. Take $F = \left(\bigcap_{n = 1}^\infty F_n\right) \cap G$. Then $F$ is closed and $m(E \setminus F) \subseteq m(E \setminus G) + \sum_n m(E \setminus F_n) \leq 2\varepsilon$. On $F$, we have $g_n = \varphi_n$ for all $n$, so $g_n \to f$ uniformly on $F$. Thus the funciton $g(x) = \lim_{n \to \infty} g_n(x)$ for $x \in F$ in continuous.
+\end{proof}
+
+\end{document}
