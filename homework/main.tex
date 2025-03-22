@@ -124,10 +124,20 @@ Since $E$ and $F$ are disjoint, it is evident that this function is a bijection.
 \end{proof}
 
 \begin{question}[Royden 2.8]
-Let $B$ be the set of rational numbers in the interval $[0, 1]$, and let ${\{I\}}_{k = 1}^\infty$ be a finite collection of open intervals that covers $B$. Prove that $\sum_{k = 1}^n m^*(I_k) > 1$.
+Let $B$ be the set of rational numbers in the interval $[0, 1]$, and let ${\{I_k\}}_{k = 1}^n$ be a finite collection of open intervals that covers $B$. Prove that $\sum_{k = 1}^n m^*(I_k) \geq 1$.
 \end{question}
 \begin{proof}
-
+By countable subadditivity, it suffices to only consider the case where $I_k$ are mutually disjoint. We also assume that each interval is finite and intersects $[0, 1]$. This allows us to write $I_k = (a_k, b_k)$ for $a_1 < b_1 \leq a_2 < b_2 \leq a_3 < \cdots < b_{n - 1} \leq a_n < b_n$ with $a_1 < 0, b_n > 1, b_1 > 0$ and $a_n < 1$. If $b_{k - 1} < a_k$ for some $k$ then the nonempty interval $(b_{k - 1}, a_k)$ is contained in the complement of the union of the $I_k$'s. Furthermore, by the conditions $b_1 > 0$ and $a_n < 1$, $(b_{k - 1}, a_k)$ intersects $[0, 1]$, and by density of the rational numbers, the $I_k$'s may not cover the closed unit interval. Thus we have $b_{k - 1} = a_k$ for all $k$, so $\bigcup_{k = 1}^n I_k = (a_1, b_n) \setminus \{a_2, \dots, a_n\}$. We then have
+\begin{align*}
+    \sum_{k = 1}^n m^*(I_k) 
+    &\geq m^*\left(\bigcup_{k = 1}^n I_k = (a_1, b_n)\right) \\
+    &= m^*((a_1, b_n) \setminus \{a_2, \dots, a_n\}) \\
+    &= m^*((a_1, b_n) \setminus \{a_2, \dots, a_n\}) + m^*(\{a_2, \dots, a_n\})\\
+    &\geq m^*((a_1, b_n)) \\
+    &\geq m^*([0, 1]) \\
+    &= 1
+\end{align*}
+as required.
 \end{proof}
 
 \begin{question}[Royden 2.10]
