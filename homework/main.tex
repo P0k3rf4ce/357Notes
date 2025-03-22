@@ -70,6 +70,7 @@
     \newtheorem{defn}[thm]{Definition}
 	\newtheorem{example}[thm]{Example}
     \newtheorem{exercise}[thm]{Exercise}
+    \newtheorem{question}[thm]{Question}
 
 \usepackage{mathtools}
 
@@ -83,6 +84,106 @@
 
 \begin{document}
 
-\section{Week 10}
+\section{Week 9}
+
+Let $m$ be a set function defined for all sets in a $\sigma$-algebra $\mathcal{A}$ with values in $[0, \infty]$. Assume $m$ is countably additive over countable disjoint collections of sets in $\mathcal{A}$.
+
+\begin{question}[Royden 2.1]
+Prove that if $A$ and $B$ are two sets in $\mathcal{A}$ with $A \subseteq B$, then $m(A) \leq m(B)$. This property is called \textit{monotonicity}.
+\end{question}
+\begin{proof}
+
+\end{proof}
+
+\begin{question}[Royden 2.2]
+Prove that if there is a set $A$ in the collection $\mathcal{A}$ for which $m(A) < \infty$ then $m(\varnothing) = 0$.
+\end{question}
+\begin{proof}
+
+\end{proof}
+
+\begin{question}[Royden 2.3]
+Let $\{E_k\}_{k = 1}^\infty$ be a countable collection of sets in $\mathcal{A}$. Prove that $m(\cup_{k = 1}^\infty E_k) \leq \sum_{k = 1}^\infty m(E_k)$.
+\end{question}
+\begin{proof}
+
+\end{proof}
+
+\begin{question}[Royden 2.4]
+A set function $c$, defined on all subsets of $\R$ is defined as follows. Define $c(E)$ to be $\infty$ if $E$ has infinitely many members and $c(E)$ to be the number of elements in $E$ if $E$ is finite; define $c(\varnothing) = 0$. Show that $c$ is a countably additive and translation invariant set function. This set function is called the \textbf{counting measure}.
+\end{question}
+\begin{proof}
+
+\end{proof}
+
+\begin{question}[Royden 2.8]
+Let $B$ be the set of rational numbers in the interval $[0, 1]$, and let $\{I\}_{k = 1}^\infty$ be a finite collection of open intervals that covers $B$. Prove that $\sum_{k = 1}^n m^*(I_k) > 1$.
+\end{question}
+\begin{proof}
+
+\end{proof}
+
+\begin{question}[Royden 2.10]
+Let $A$ and $B$ be bounded sets for which there is an $\alpha > 0$ such that $|a - b| > \alpha$ for all $a \in A, b \in B$. Prove that $m^*(A \cup B) = m^*(A) + m^*(B)$.
+\end{question}
+\begin{proof}
+
+\end{proof}
+
+\begin{question}[Royden 2.11]
+Prove that if a $\sigma$-algebra of subsets of $\R$ contains intervals of the form $(a, \infty)$, then it contains all intervals.
+\end{question}
+\begin{proof}
+
+\end{proof}
+
+\begin{question}[Royden 2.19]
+Let $E$ have finite outer measure. Show that if $E$ is not measurable, then there is an open set $\mathcal{O}$ containing $E$ that has finite outer measure and for which
+\[ m^*(\mathcal{O} \setminus E) > m^*(\mathcal{O}) - m^*(E). \]
+\end{question}
+\begin{proof}
+
+\end{proof}
+
+\begin{question}[Royden 2.20: Lebesgue]
+Let $E$ have finite outer measure. Show that $E$ is measurable if and only if for each open, bounded interval $(a, b)$,
+\[ b - a = m^*((a, b) \cap E) + m^*((a, b) \setminus E). \]
+\end{question}
+\begin{proof}
+
+\end{proof}
+
+\begin{question}[Royden 2.24]
+Show that if $E_1$ and $E_2$ are measurable, then
+\[ m(E_1 \cup E_2) + m(E_1 \cap E_2) = m(E_1) + m(E_2). \]
+\end{question}
+\begin{proof}
+
+\end{proof}
+
+\begin{question}[Royden 2.25]
+Show that the assumption that $m(B_1) < \infty$ is necessary in part (ii) of the theorem regarding continuity of measure.
+\end{question}
+\begin{proof}
+
+\end{proof}
+
+\begin{question}[Royden 2.27]
+Let $\mathcal{M}'$ be any $\sigma$-algebra of subsets of $\R$ and $m'$ a set function on $\mathcal{M}'$ which takes values in $[0, \infty]$, is countably additive, and such that $m'(\varnothing) = 0$.
+\begin{enumerate}[label=(\roman*)]
+    \item Show that $m'$ is finitely additive, monotone, countably monotone, and possesses the excision property.
+    \item Show that $m'$ possesses the same continuity properties as Lebesgue measure.
+\end{enumerate}
+\end{question}
+\begin{proof}
+
+\end{proof}
+
+\begin{question}[Royden 2.28]
+Show that continuity of measure together with finite additivity of measure implies countable additivity of measure.
+\end{question}
+\begin{proof}
+
+\end{proof}
 
 \end{document}
