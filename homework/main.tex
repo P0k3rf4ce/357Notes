@@ -53,7 +53,7 @@
 
 \newcommand{\res}{\operatorname{res}}
 
-\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
 
 % Theorem environments
 \usepackage{amsthm}
@@ -92,7 +92,7 @@ Let $m$ be a set function defined for all sets in a $\sigma$-algebra $\mathcal{A
 Prove that if $A$ and $B$ are two sets in $\mathcal{A}$ with $A \subseteq B$, then $m(A) \leq m(B)$. This property is called \textit{monotonicity}.
 \end{question}
 \begin{proof}
-
+Since $A = A \sqcup (B \setminus A)$ we have $m(B) = m(A) + m(B \setminus A)$. From this equality, it is evident that $A$ may not have infinite measure unless $B$ does as well, so the inequality $m(A) \leq m(B)$ is obvious for when $B$ has infinite measure. For $B$ with finite measure, we have $m(A) \leq m(A) + m(B \setminus A) = m(B)$ since $m(B \setminus A) \geq 0$.
 \end{proof}
 
 \begin{question}[Royden 2.2]
@@ -103,7 +103,7 @@ Prove that if there is a set $A$ in the collection $\mathcal{A}$ for which $m(A)
 \end{proof}
 
 \begin{question}[Royden 2.3]
-Let $\{E_k\}_{k = 1}^\infty$ be a countable collection of sets in $\mathcal{A}$. Prove that $m(\cup_{k = 1}^\infty E_k) \leq \sum_{k = 1}^\infty m(E_k)$.
+Let ${\{E_k\}}_{k = 1}^\infty$ be a countable collection of sets in $\mathcal{A}$. Prove that $m(\cup_{k = 1}^\infty E_k) \leq \sum_{k = 1}^\infty m(E_k)$.
 \end{question}
 \begin{proof}
 
@@ -117,7 +117,7 @@ A set function $c$, defined on all subsets of $\R$ is defined as follows. Define
 \end{proof}
 
 \begin{question}[Royden 2.8]
-Let $B$ be the set of rational numbers in the interval $[0, 1]$, and let $\{I\}_{k = 1}^\infty$ be a finite collection of open intervals that covers $B$. Prove that $\sum_{k = 1}^n m^*(I_k) > 1$.
+Let $B$ be the set of rational numbers in the interval $[0, 1]$, and let ${\{I\}}_{k = 1}^\infty$ be a finite collection of open intervals that covers $B$. Prove that $\sum_{k = 1}^n m^*(I_k) > 1$.
 \end{question}
 \begin{proof}
 
@@ -170,7 +170,7 @@ Show that the assumption that $m(B_1) < \infty$ is necessary in part (ii) of the
 
 \begin{question}[Royden 2.27]
 Let $\mathcal{M}'$ be any $\sigma$-algebra of subsets of $\R$ and $m'$ a set function on $\mathcal{M}'$ which takes values in $[0, \infty]$, is countably additive, and such that $m'(\varnothing) = 0$.
-\begin{enumerate}[label=(\roman*)]
+\begin{enumerate}[label = (\roman*)]
     \item Show that $m'$ is finitely additive, monotone, countably monotone, and possesses the excision property.
     \item Show that $m'$ possesses the same continuity properties as Lebesgue measure.
 \end{enumerate}
