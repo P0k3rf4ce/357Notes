@@ -115,7 +115,12 @@ as required.
 A set function $c$, defined on all subsets of $\R$ is defined as follows. Define $c(E)$ to be $\infty$ if $E$ has infinitely many members and $c(E)$ to be the number of elements in $E$ if $E$ is finite; define $c(\varnothing) = 0$. Show that $c$ is a countably additive and translation invariant set function. This set function is called the \textbf{counting measure}.
 \end{question}
 \begin{proof}
+For translation invariance, we simply note that $f: E \to E + y, e \mapsto e + y$ is a bijection for any $E \in \mathcal{P}(\R)$ and $y \in \R$. For countable additivity, consider a countable collection $\{E_k\}$ of mutually disjoint subsets of $\R$. Since there are sets of finite cardinality, we know that $c(\varnothing) = 0$ by Royden 2.2, and hence can remove empty sets from the collection without any effect on the union or the sum of measures. We thus can assume that $\{E_k\}$ is a collection of nonempty sets. If it is an infinite collection, then we have $c(E_k) \geq 1$ and hence $\sum_k c(E_k) \geq \sum_k 1 = \infty$. We also have in this case that $\bigcup_k E_k$ contains infinitely many elements, and hence $c(\bigcup_k E_k) = \infty$, so the equality holds in this case. A similar argument shows that if the collection is finite and contains at least one infinite set then the equality holds by virtue of both quantities being infinite. We thus only need to check the case that ${\{E_k\}}_{k = 1}^K$ for some $K > 0$ with $c(E_k)$ finite. 
 
+Consider the case $K = 2$; that is the collection of two nonempty finite disjoint sets $E, F$. Then there are bijections $f: E \to \{1, \dots, n\}, g: F \to \{1, \dots, m\}$ for some $n, m > 0$, and we construct the function $h: E \sqcup F \to \{1, \dots, n + m\}$ by \[ x \mapsto \begin{cases}
+    f(x) & x \in E \\ n + g(x) & x \in F
+\end{cases} \]
+Since $E$ and $F$ are disjoint, it is evident that this function is a bijection. We thus have by definition of $c$ that $c(E \sqcup F) = n + m = c(E) + c(F)$. The case for a general $K$ follows by a simple inductive argument.
 \end{proof}
 
 \begin{question}[Royden 2.8]
