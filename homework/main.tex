@@ -103,10 +103,12 @@ Since $\varnothing \subseteq A$, we have by Royden 2.1 that $m(\varnothing) \leq
 \end{proof}
 
 \begin{question}[Royden 2.3]
-Let ${\{E_k\}}_{k = 1}^\infty$ be a countable collection of sets in $\mathcal{A}$. Prove that $m(\cup_{k = 1}^\infty E_k) \leq \sum_{k = 1}^\infty m(E_k)$.
+Let ${\{E_k\}}_{k = 1}^\infty$ be a countable collection of sets in $\mathcal{A}$. Prove that $m(\bigcup_{k = 1}^\infty E_k) \leq \sum_{k = 1}^\infty m(E_k)$.
 \end{question}
 \begin{proof}
-
+Define the collection of sets ${\{F_k\}}_{k = 1}^\infty$ by $F_k = E_k \setminus \bigcup_{i = 1}^{k - 1} E_i \in \mathcal{A}$. It is clear that $\bigcup_{k = 1}^\infty F_k \subseteq \bigcup_{k = 1}^\infty E_k$. For the reverse inclusion, given an element $x \in \bigcup_{k = 1}^\infty E_k$, we take the smallest natural $n$ for which $x \in E_n$ and note that $x \in F_n$ by construction of the $F_k$'s. Therefore the two unions are equal. Furthermore, given positive integers $n < m$, we have that $F_n \subseteq E_n$ and $F_m \cap E_n = \varnothing$ by construction, so $F_n \cap F_m = \varnothing$. Thus the collection ${\{F_k\}}_{k = 1}^\infty$ is a disjoint collection of sets in $\mathcal{A}$ and we have
+\[ m\left(\bigcup_{k = 1}^\infty E_k\right) = m\left(\bigcup_{k = 1}^\infty F_k\right) = \sum_{k = 1}^\infty m(F_k) \leq \sum_{k = 1}^\infty m(E_k) \]
+as required.
 \end{proof}
 
 \begin{question}[Royden 2.4]
