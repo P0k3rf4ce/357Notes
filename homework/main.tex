@@ -153,7 +153,8 @@ Thus for all $\varepsilon > 0$, $m^*(A) + m^*(B) \leq m^*(A \cup B) + \varepsilo
 Prove that if a $\sigma$-algebra of subsets of $\R$ contains intervals of the form $(a, \infty)$, then it contains all intervals.
 \end{question}
 \begin{proof}
-
+Let $\mathcal{A}$ be such a $\sigma$-algebra. We have the following cases to consider:
+\[ (a, b), [a, b], (a, b], [a, b), (-\infty, b), (-\infty, b], [a, \infty), (-\infty, \infty) \text{ and } \varnothing. \] For the last two, we have $(-\infty, \infty) = \bigcup_{n = 1}^\infty (-n, \infty) \in \mathcal{A}$ and $\varnothing = (-\infty, \infty)^c \in \mathcal{A}$. $(-\infty, b] = (b, \infty)^c \in \mathcal{A}$, and so $(a, b] = ((-\infty, a] \cup (b, \infty))^c \in \mathcal{A}$. Since $(-\infty, b]$ for all $b$, we also have $(-\infty, b) = \bigcup_{n = 1}^\infty (-\infty, b - 1/n] \in \mathcal{A}$, which also gives us $[a, \infty) = (-\infty, a)^c \in \mathcal{A}$. We now can also get $(a, b) = ((-\infty, a] \cup [b, \infty))^c \in \mathcal{A}$, $[a, b] = ((-\infty, a) \cup (b, \infty))^c \in \mathcal{A}$, and $[a, b) = ((-\infty, a) \cup [b, \infty))^c \in \mathcal{A}$. Therefore, $\mathcal{A}$ contains all intervals.
 \end{proof}
 
 \begin{question}[Royden 2.19]
