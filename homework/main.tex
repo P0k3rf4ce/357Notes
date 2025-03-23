@@ -213,7 +213,24 @@ Let $\mathcal{M}'$ be any $\sigma$-algebra of subsets of $\R$ and $m'$ a set fun
 \end{enumerate}
 \end{question}
 \begin{proof}
+\textit{(i)}. For finite additivity, let $E_1, \dots, E_n \in \mathcal{M}'$ be a finite collection of measurable sets. We can then define $E_k = \varnothing$ for $k > n$ and apply countable additivity to get $m'(\bigcup_{k = 1}^n E_k) = m'(\bigcup_{k = 1}^\infty E_k) = \sum_{k = 1}^\infty m'(E_k) = \sum_{k = 1}^n m'(E_k)$. For excision property and monotonicity, for sets $E \subseteq F \in \mathcal{M}'$, we have $m'(F) = m'(E) + m'(F \setminus E) \implies m'(E) = m'(F) - m'(F \setminus E)$, and furthermore we have $m'(E) = m'(F) - m'(F \setminus E) \leq m'(F)$. For countable monotonicity, consider a set $E \in \mathcal{M}'$ and a cover ${\{E_k\}}_{k = 1}^\infty \subseteq \mathcal{M}'$ of $E$. Construct a cover ${\{F_k\}}_{k = 1}^\infty$ with $F_k = E_k \setminus \bigcup_{i = 1}^{k - 1} E_i$ and note that $F_k \subseteq E_k$, the collection is disjoint, and $\bigcup_{k = 1}^\infty F_k = \bigcup_{k = 1}^\infty E_k$. We thus have by countable additivity and monotonicity that
+\[ m'(E) \leq m'\left(\bigcup_{k = 1}^\infty F_k\right) = \sum_{k = 1}^\infty m'(F_k) \leq \sum_{k = 1}^\infty m'(E_k) \]
+Thus the four properties hold.
 
+\textit{(ii)}. Let ${\{E_k\}}_{k = 1}^\infty$ be an increasing sequence of sets in $\mathcal{M}'$. If any is of infinite measure, then both sides must be infinite by monotonicity, so continuity holds in this case. Otherwise, we construct $C_k = E_k \setminus E_{k - 1}$ where we define $E_0 = \varnothing$. Since the sequence $E_k$ is increasing, we have $\bigcup_{k = 1}^\infty C_k = \bigcup_{k = 1}^\infty E_k$ and the collection of $C_k$'s is disjoint, hence countable additivity applies to give us 
+\[ m'\left(\bigcup_{k = 1}^\infty E_k\right) = m'\left(\bigcup_{k = 1}^\infty C_k\right) = \sum_{k = 1}^\infty m'(E_k \setminus E_{k - 1}) \]
+We then apply the excision property to get 
+\[ m'\left(\bigcup_{k = 1}^\infty E_k\right) = \lim_{n \to \infty}\sum_{k = 1}^n m'(E_k) - m'(E_{k - 1}) = \lim_{n \to \infty} m'(E_n) - m'(E_0) = \lim_{n \to \infty} m'(E_n) \]
+Now let ${\{D_k\}}_{k = 1}^\infty$ be an decreasing sequence of sets in $\mathcal{M}'$ with $m'(D_1) < \infty$. We can then construct an increasing sequence $E_k = D_1 \setminus D_k$ with each $E_k$ of finite measure by monotonicity since $D_1$ is such. We then have
+\begin{align*}
+    m'(D_1) - m'\left(\bigcap_{k = 1}^\infty D_k\right) 
+    &= m'\left(D_1 \setminus \bigcap_{k = 1}^\infty D_k\right) \\
+    &= m'\left(\bigcup_{k = 1}^\infty D_1 \setminus D_k\right) \\
+    &= m'\left(\bigcup_{k = 1}^\infty E_k\right) \\
+    &= \lim_{n \to \infty} m'(E_k) \\
+    &= \lim_{n \to \infty} m'(D_1) - m'(D_k) \\
+\end{align*}
+Continuity of intersection of a decreasing sequence then follows.
 \end{proof}
 
 \begin{question}[Royden 2.28]
