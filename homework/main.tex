@@ -164,7 +164,7 @@ Let $E$ have finite outer measure. Show that if $E$ is not measurable, then ther
 \begin{proof}
 Since $E$ is not measurable, there is an $\varepsilon > 0$ such that for all open sets $\mathcal{O}$ containing $E$ we have $m^*(\mathcal{O} \setminus E) \geq \varepsilon$. By definition of measure, we can take a collection of open intervals ${\{I_k\}}_{k = 1}^\infty$ such that it covers $E$ and $\sum_{k = 1}^\infty \ell(I_k) < m^*(E) + \varepsilon$. Letting $\mathcal{O} = \bigcup_{k = 1}^\infty I_k$, we see that
 \[ m^*(\mathcal{O}) \leq \sum_{k = 1}^\infty \ell(I_k) < m^*(E) + \varepsilon \longimplies m^*(\mathcal{O}) - m^*(E) < \varepsilon \leq m^*(\mathcal{O} \setminus E) \]
-which proves the claim.
+which shows that $\mathcal{O}$ has finite measure and proves the claim.
 \end{proof}
 
 \begin{question}[Royden 2.20: Lebesgue]
@@ -172,7 +172,16 @@ Let $E$ have finite outer measure. Show that $E$ is measurable if and only if fo
 \[ b - a = m^*((a, b) \cap E) + m^*((a, b) \setminus E). \]
 \end{question}
 \begin{proof}
-
+Forward direction follows directly from the defintion of measurable sets. For the backward direction, it suffices to show for a given $\varepsilon > 0$ the existence of an open set $\mathcal{O}$ containing $E$ with the property $m^*(\mathcal{O} \setminus E) < \varepsilon$. By definition of measure, take a cover ${\{I_k\}}_{k = 1}^\infty$ of $E$ consisting of open intervals such that $\sum_{k = 1}^\infty \ell(I_k) < m^*(E) + \varepsilon$. Since $E$ is bounded, we can assume that $I_k = (a_k, b_k)$ are bounded. Letting $\mathcal{O} = \bigcup_{k = 1}^\infty I_k$ we get
+\begin{align*}
+    m^*(\mathcal{O} \setminus E)
+    &\leq \sum_{k = 1}^\infty m^*((a_k, b_k) \setminus E) \\
+    &= \sum_{k = 1}^\infty \left((b_k - a_k) - m^*((a_k, b_k) \cap E)\right) \\
+    &= \sum_{k = 1}^\infty \ell(I_k) - \sum_{k = 1}^\infty m^*(I_k \cap E) \\
+    &< m^*(E) + \varepsilon - m^*(\mathcal{O} \cap E) \\
+    &= \varepsilon
+\end{align*}
+As mentioned earlier, this shows that $E$ is measurable.
 \end{proof}
 
 \begin{question}[Royden 2.24]
