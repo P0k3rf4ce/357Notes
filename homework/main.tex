@@ -189,7 +189,13 @@ Show that if $E_1$ and $E_2$ are measurable, then
 \[ m(E_1 \cup E_2) + m(E_1 \cap E_2) = m(E_1) + m(E_2). \]
 \end{question}
 \begin{proof}
-
+Since they are measurable, we have $m(E_1) = m(E_1 \cap E_2) + m(E_1 \setminus E_2)$ and $m(E_2) = m(E_1 \cap E_2) + m(E_2 \setminus E_1)$. Adding these, we get
+\begin{align*} 
+    m(E_1) + m(E_2) 
+    &= m(E_1 \cap E_2) + (m(E_1 \cap E_2) + m(E_1 \setminus E_2) + m(E_2 \setminus E_1)) \\
+    &= m(E_1 \cap E_2) + m(E_1 \cup E_2)
+\end{align*}
+as required.
 \end{proof}
 
 \begin{question}[Royden 2.25]
