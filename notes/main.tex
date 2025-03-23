@@ -53,7 +53,7 @@
 
 \newcommand{\res}{\operatorname{res}}
 
-\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
 
 % Theorem environments
 \usepackage{amsthm}
@@ -122,7 +122,7 @@ Suppose that $M > |f(x)|$ for all $x \in E$. Let $y_i \in \R$ be an increasing s
 
 \begin{thm}
 Let $f: E \to \cl{\R}$ be Lebesgue measurable. Then 
-\begin{enumerate}[label=(\roman*)]
+\begin{enumerate}[label = (\roman*)]
     \item If $f \geq 0$ then there exists an increasing sequence of simple functions $\varphi_n \geq 0$ such that $\lim_{n \to \infty} \varphi(x) = f(x)$ for all $x \in E$.
     \item In general, there exists a sequence of simple functions $\varphi_n$ such that $\lim_{n \to \infty} \varphi_n(x) = f(x)$ and $|\varphi_n(x)| \leq |f(x)|$ for all $x \in E$.
 \end{enumerate}
@@ -134,7 +134,7 @@ For (i), if $f \geq 0$, if we set $f_n = \max\{f, n\}$ then by the previous lemm
 \end{proof}
 
 \begin{thm}[Egorov]
-    Let $f_n: E \to \R$ be a sequence of Lebesgue measurable functions converging pointwise to $f: E \to \R$. We also assume that $m(E) < \infty$. Then for all $\varepsilon > 0$, there is a closed set $F \subseteq E$ such that $m(E \setminus F) < \varepsilon$ and $f_n \to f$ converges uniformly on $F$ (i.e. for all $\delta > 0$ there is some $N$ such that $|f(x) - f_n(x)| < \delta$ for all $x \in F$ and $n \geq N$).
+    Let $f_n: E \to \R$ be a sequence of Lebesgue measurable functions converging pointwise to $f: E \to \R$. We also assume that $m(E) < \infty$. Then for all $\varepsilon > 0$, there is a closed set $F \subseteq E$ such that $m(E \setminus F) < \varepsilon$ and $f_n \to f$ converges uniformly on $F$ (that is, for all $\delta > 0$ there is some $N$ such that $|f(x) - f_n(x)| < \delta$ for all $x \in F$ and $n \geq N$).
 \end{thm}
 
 \begin{lemma}
