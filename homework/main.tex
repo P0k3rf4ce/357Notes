@@ -237,7 +237,9 @@ Continuity of intersection of a decreasing sequence then follows.
 Show that continuity of measure together with finite additivity of measure implies countable additivity of measure.
 \end{question}
 \begin{proof}
-
+Let $m'$ be a set function on a $\sigma$-algebra $\mathcal{M}'$ with finite additivity and continuity. Let ${\{E_k\}}_{k = 1}^\infty$ be a disjoint collection in $\mathcal{M}'$. We form an increasing sequence ${\{F_k\}}_{k = 1}^\infty$ by defining $F_k = \bigcup_{i = 1}^k E_k$. By continuity, we have $m'(\bigcup_{i = 1}^\infty E_k) = m'(\bigcup_{i = 1}^\infty F_k) = \lim_{n \to \infty} m'(F_k) = \lim_{n \to \infty} m'(\bigcup_{i = 1}^k E_k)$. By finite additivity, we can write $m'(\bigcup_{i = 1}^k E_k) = \sum_{k = 1}^n m'(E_k)$, so we get 
+\[ m'(\bigcup_{i = 1}^\infty E_k) = \lim_{n \to \infty} m'(\bigcup_{i = 1}^k E_k) = \lim_{n \to \infty} \sum_{k = 1}^n m'(E_k) = \sum_{k = 1}^\infty m'(E_k) \]
+which proves countable additivity.
 \end{proof}
 
 \end{document}
