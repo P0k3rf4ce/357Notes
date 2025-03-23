@@ -162,7 +162,9 @@ Let $E$ have finite outer measure. Show that if $E$ is not measurable, then ther
 \[ m^*(\mathcal{O} \setminus E) > m^*(\mathcal{O}) - m^*(E). \]
 \end{question}
 \begin{proof}
-
+Since $E$ is not measurable, there is an $\varepsilon > 0$ such that for all open sets $\mathcal{O}$ containing $E$ we have $m^*(\mathcal{O} \setminus E) \geq \varepsilon$. By definition of measure, we can take a collection of open intervals ${\{I_k\}}_{k = 1}^\infty$ such that it covers $E$ and $\sum_{k = 1}^\infty \ell(I_k) < m^*(E) + \varepsilon$. Letting $\mathcal{O} = \bigcup_{k = 1}^\infty I_k$, we see that
+\[ m^*(\mathcal{O}) \leq \sum_{k = 1}^\infty \ell(I_k) < m^*(E) + \varepsilon \longimplies m^*(\mathcal{O}) - m^*(E) < \varepsilon \leq m^*(\mathcal{O} \setminus E) \]
+which proves the claim.
 \end{proof}
 
 \begin{question}[Royden 2.20: Lebesgue]
