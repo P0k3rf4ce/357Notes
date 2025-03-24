@@ -250,7 +250,9 @@ which proves countable additivity.
 Let $E \in \mathcal{E}$ satisfy $m(E) > 0$. Show that there is a bounded set $A \subseteq E$ such that $m(A) > 0$.
 \end{question}
 \begin{proof}
-	
+Consider the increasing collection ${\{A_n := (-n, n) \cap E\}}_{n = 1}^\infty$ of measurable sets. By continuity of measure, we have
+\[ \lim_{n \to \infty} m(A_n) = m\left(\bigcup_{n = 1}^\infty A_n\right) = m(E) > 0 \]
+Since the limit of $m(A_n) > 0$, we must have that $m(A_n) > 0$ for at least one $n$. Hence $A := (-n, n) \cap E \subseteq E$ is a bounded set with $m(A) > 0$.
 \end{proof}
 
 \begin{question}
