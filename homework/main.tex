@@ -259,7 +259,9 @@ Since the limit of $m(A_n) > 0$, we must have that $m(A_n) > 0$ for at least one
 Show that every open set $O \subset \mathbb{R}$ is a countable union of disjoint intervals.
 \end{question}
 \begin{proof}
+For each $x \in O$, there is some $\varepsilon > 0$ such that $(x - \varepsilon_x, x + \varepsilon_x) \subseteq O$. Note that if $\delta > 0$ is such that for all $0 < \varepsilon < \delta$, $(x - \varepsilon, x + \varepsilon) \subseteq O$, then $(x - \delta, x + \delta) = \bigcup_{0 < \varepsilon < \delta} (x - \varepsilon, x + \varepsilon) \subseteq O$. We thus let $\delta_x = \sup\{\varepsilon > 0: (x - \varepsilon, x + \varepsilon) \subseteq O\} > 0$, which is finite since $O \neq \R$ and satisfies $U_x := (x - \delta_x, x + \delta_x) \subseteq O$.
 
+By construction of the $\delta_x$'s, we have $\bigcup_{x \in O \cap \Q} U_x$, a countable union of disjoint intervals, is a subset of $O$. For the reverse equality, for any point $y \in O$, we take $\varepsilon > 0$ for which $(y - 2\varepsilon, y + 2\varepsilon) \subseteq O$, and we take some rational point $x \in (y - \varepsilon, y + \varepsilon) \subseteq O$. Note that then $y \in (x - \varepsilon, x + \varepsilon) \subseteq (y - 2\varepsilon, y + 2\varepsilon) \subseteq O$, so by construction, $y \in (x - \varepsilon, x + \varepsilon) \subseteq U_x$. Therefore, $O \subseteq \bigcup_{x \in O \cap \Q} U_x$, which proves that $O$ is a countable union of disjoint open intervals.
 \end{proof}
 
 \begin{question}
