@@ -299,7 +299,9 @@ Let $f : \mathbb{R} \to \mathbb{R}$ be a Lebesgue measurable function such that
 Show that $f(x) = ax$ for some $a \in \mathbb{R}$. \textbf{Hint:} Apply Lusin's theorem and the previous problem.
 \end{question}
 \begin{proof}
-	
+Use Lusin's theorem to get a closed set $F$ with $m(F^c) < 1/2$ and a continuous $g: F \to \R$ such that $f = g$ on $F$. By question 1, we can also restrict $F$ to a compact set while keeping $m(F) > 0$. We can then apply question 4 to get an open interval $(-M, M)$ contained in $F - F$. Since $F$ is compact, $g$ is also uniformly continuous on $F$, so given an $\varepsilon > 0$, there is some $\delta > 0$ for which $|g(x) - g(y)| < \varepsilon$ for any $x, y \in F, |x - y| < \delta$. For any $h \in (-\delta, \delta)$, we take $x \in F$ for which $h = (x + h) - x \in F - F$ and get $f(h) = f(x + h) - f(x) = g(x + h) - g(x) \implies |f(h)| < \varepsilon$. This shows that $f$ is continuous at 0. For any arbitrary $x_0 \in \R$, we can write $f(x + x_0) = f(x) + f(x_0)$ which shows that $f$ is continuous at $x_0$, therefore $f$ is continuous on $\R$. By continuity, it then suffices to only show that $f(x) = ax$ on $x \in \Q$.
+
+Set $a := f(1)$. $f(0) = f(0) + f(0) \implies f(0) = 0$ and for any $x \in \Q$, we have $f(-x) = f(0) - f(x) = -f(x)$. For any $n \in \N$, we have $f(n) = \sum_{i = 1}^n f(1) = an$, and $f(-n) = -f(n) = -an$, so $f(x) = ax$ on $\Z$. For any $n \in \N$, we have $nf(1/n) = f(1) = a \implies f(1/n) = a/n$ and for any $p, q \in \N$, we have $qf(p/q) = f(p) = ap \implies f(p/q) = ap/q$, so for any $x \in \Q, f(x) = ax$. As noted earlier, continuity of $f$ shows that $f(x) = ax$ on $\R$.
 \end{proof}
 
 \begin{question}
