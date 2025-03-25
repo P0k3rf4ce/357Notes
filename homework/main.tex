@@ -269,7 +269,9 @@ Let $E \in \mathcal{E}$ be Lebesgue measurable with $m(E) > 0$. Let $0 < \alpha 
 \[ m(E \cap I) \geq \alpha m(I) \]
 \end{question}
 \begin{proof}
-
+For any $A \subseteq E$, we have $m(E \cap I) \geq m(A \cap I)$ for any bounded interval $I$. By question 1, there is a bounded set $A$ with positive measure, so we may assume that $E$ is already bounded. Take $M > 0$ such that $E \subseteq (-M, M)$. By way of contradiction, suppose that $m(E \cap I) < \alpha m(I)$ for all bounded intervals $I$. For a fixed $\varepsilon > 0$, take open intervals ${\{I_k\}}_{k = 1}^\infty$ that cover $E$ and $\sum_{k = 1}^\infty \ell(I_k) < m(E) + \varepsilon$. We then have 
+\[ m(E) \leq \sum_{k = 1}^\infty m(E \cap I_k) < \alpha \sum_{k = 1}^\infty \ell(I_k) < \alpha m(E) + \alpha\varepsilon \]
+Letting $\varepsilon \to 0$, we see that $m(E) \leq \alpha m(E)$, which is impossible since $m(E) \in (0, \infty)$ (recall that we took $E$ to be bounded) and $\alpha \in (0, 1)$. Therefore, we must have some bounded interval $I$ for which $m(E \cap I) \geq \alpha m(I)$.
 \end{proof}
     
 \begin{question}
