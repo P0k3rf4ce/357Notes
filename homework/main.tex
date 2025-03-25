@@ -278,7 +278,19 @@ Letting $\varepsilon \to 0$, we see that $m(E) \leq \alpha m(E)$, which is impos
 Let $E \in \mathcal{E}$ be Lebesgue measurable with $m(E) > 0$. Prove that the set $A = E - E := \{x - y : x \in E, y \in E\}$ contains an open interval $J$ such that $0 \in J$.
 \end{question}
 \begin{proof}
-
+By question 3, we take a bounded interval $I$ such that $m(E \cap I) \geq \frac{3}{4}m(I)$. If we suppose that the result does not hold, then we can take a sequence $x_n \to 0$ such that $x_n \notin E - E$. We take $n$ large enough such that $|x_n| < \frac{1}{4}m(I)$ and note that $x_n + E \subseteq E^c$. We then get the following:
+\begin{align*}
+    m(I)
+    &= m(E \cap I) + m(I \cap E^c) \\
+    &\geq m(E \cap I) + m(I \cap (x_n + E)) \\
+    &= m(E \cap I) + m((I - x_n) \cap E) \\
+    &\geq 2m(E \cap I) - m(((I + x_n) \setminus (I - x_n)) \cap E) \\
+    &\geq 2m(E \cap I) - m((I + x_n) \setminus (I - x_n)) \\
+    &\geq 2m(E \cap I) - 2|x_n| \\
+    &> \frac{3}{2}m(I) - \frac{1}{2}m(I) \\
+    &= m(I)
+\end{align*}
+which is a contradiction.
 \end{proof}
 
 \begin{question}
