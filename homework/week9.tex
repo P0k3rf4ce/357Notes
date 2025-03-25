@@ -84,7 +84,7 @@
 
 \begin{document}
 
-\section{Week 9}
+\section{Royden Chapter 2}
 
 Let $m$ be a set function defined for all sets in a $\sigma$-algebra $\mathcal{A}$ with values in $[0, \infty]$. Assume $m$ is countably additive over countable disjoint collections of sets in $\mathcal{A}$.
 
@@ -240,75 +240,6 @@ Show that continuity of measure together with finite additivity of measure impli
 Let $m'$ be a set function on a $\sigma$-algebra $\mathcal{M}'$ with finite additivity and continuity. Let ${\{E_k\}}_{k = 1}^\infty$ be a disjoint collection in $\mathcal{M}'$. We form an increasing sequence ${\{F_k\}}_{k = 1}^\infty$ by defining $F_k = \bigcup_{i = 1}^k E_k$. By continuity, we have $m'(\bigcup_{i = 1}^\infty E_k) = m'(\bigcup_{i = 1}^\infty F_k) = \lim_{n \to \infty} m'(F_k) = \lim_{n \to \infty} m'(\bigcup_{i = 1}^k E_k)$. By finite additivity, we can write $m'(\bigcup_{i = 1}^k E_k) = \sum_{k = 1}^n m'(E_k)$, so we get 
 \[ m'(\bigcup_{i = 1}^\infty E_k) = \lim_{n \to \infty} m'(\bigcup_{i = 1}^k E_k) = \lim_{n \to \infty} \sum_{k = 1}^n m'(E_k) = \sum_{k = 1}^\infty m'(E_k) \]
 which proves countable additivity.
-\end{proof}
-
-\section{Week 10}
-
-\subsection{Worksheet}
-
-\begin{question}
-Let $E \in \mathcal{E}$ satisfy $m(E) > 0$. Show that there is a bounded set $A \subseteq E$ such that $m(A) > 0$.
-\end{question}
-\begin{proof}
-Consider the increasing collection ${\{A_n := (-n, n) \cap E\}}_{n = 1}^\infty$ of measurable sets. By continuity of measure, we have
-\[ \lim_{n \to \infty} m(A_n) = m\left(\bigcup_{n = 1}^\infty A_n\right) = m(E) > 0 \]
-Since the limit of $m(A_n) > 0$, we must have that $m(A_n) > 0$ for at least one $n$. Hence $A := (-n, n) \cap E \subseteq E$ is a bounded set with $m(A) > 0$.
-\end{proof}
-
-\begin{question}
-Show that every open set $O \subset \mathbb{R}$ is a countable union of disjoint intervals.
-\end{question}
-\begin{proof}
-For each $x \in O$, there is some $\varepsilon > 0$ such that $(x - \varepsilon_x, x + \varepsilon_x) \subseteq O$. Note that if $\delta > 0$ is such that for all $0 < \varepsilon < \delta$, $(x - \varepsilon, x + \varepsilon) \subseteq O$, then $(x - \delta, x + \delta) = \bigcup_{0 < \varepsilon < \delta} (x - \varepsilon, x + \varepsilon) \subseteq O$. We thus let $\delta_x = \sup\{\varepsilon > 0: (x - \varepsilon, x + \varepsilon) \subseteq O\} > 0$, which is finite since $O \neq \R$ and satisfies $U_x := (x - \delta_x, x + \delta_x) \subseteq O$.
-
-By construction of the $\delta_x$'s, we have $\bigcup_{x \in O \cap \Q} U_x$, a countable union of disjoint intervals, is a subset of $O$. For the reverse equality, for any point $y \in O$, we take $\varepsilon > 0$ for which $(y - 2\varepsilon, y + 2\varepsilon) \subseteq O$, and we take some rational point $x \in (y - \varepsilon, y + \varepsilon) \subseteq O$. Note that then $y \in (x - \varepsilon, x + \varepsilon) \subseteq (y - 2\varepsilon, y + 2\varepsilon) \subseteq O$, so by construction, $y \in (x - \varepsilon, x + \varepsilon) \subseteq U_x$. Therefore, $O \subseteq \bigcup_{x \in O \cap \Q} U_x$, which proves that $O$ is a countable union of disjoint open intervals.
-\end{proof}
-
-\begin{question}
-Let $E \in \mathcal{E}$ be Lebesgue measurable with $m(E) > 0$. Let $0 < \alpha < 1$. Show that there is a bounded interval $I$ so that
-\[ m(E \cap I) \geq \alpha m(I) \]
-\end{question}
-\begin{proof}
-For any $A \subseteq E$, we have $m(E \cap I) \geq m(A \cap I)$ for any bounded interval $I$. By question 1, there is a bounded set $A$ with positive measure, so we may assume that $E$ is already bounded. Take $M > 0$ such that $E \subseteq (-M, M)$. By way of contradiction, suppose that $m(E \cap I) < \alpha m(I)$ for all bounded intervals $I$. For a fixed $\varepsilon > 0$, take open intervals ${\{I_k\}}_{k = 1}^\infty$ that cover $E$ and $\sum_{k = 1}^\infty \ell(I_k) < m(E) + \varepsilon$. We then have 
-\[ m(E) \leq \sum_{k = 1}^\infty m(E \cap I_k) < \alpha \sum_{k = 1}^\infty \ell(I_k) < \alpha m(E) + \alpha\varepsilon \]
-Letting $\varepsilon \to 0$, we see that $m(E) \leq \alpha m(E)$, which is impossible since $m(E) \in (0, \infty)$ (recall that we took $E$ to be bounded) and $\alpha \in (0, 1)$. Therefore, we must have some bounded interval $I$ for which $m(E \cap I) \geq \alpha m(I)$.
-\end{proof}
-    
-\begin{question}
-Let $E \in \mathcal{E}$ be Lebesgue measurable with $m(E) > 0$. Prove that the set $A = E - E := \{x - y : x \in E, y \in E\}$ contains an open interval $J$ such that $0 \in J$.
-\end{question}
-\begin{proof}
-By question 3, we take a bounded interval $I$ such that $m(E \cap I) \geq \frac{3}{4}m(I)$. If we suppose that the result does not hold, then we can take a sequence $x_n \to 0$ such that $x_n \notin E - E$. We take $n$ large enough such that $|x_n| < \frac{1}{4}m(I)$ and note that $x_n + E \subseteq E^c$. We then get the following:
-\begin{align*}
-    m(I)
-    &= m(E \cap I) + m(I \cap E^c) \\
-    &\geq m(E \cap I) + m(I \cap (x_n + E)) \\
-    &= m(E \cap I) + m((I - x_n) \cap E) \\
-    &\geq 2m(E \cap I) - m(((I + x_n) \setminus (I - x_n)) \cap E) \\
-    &\geq 2m(E \cap I) - m((I + x_n) \setminus (I - x_n)) \\
-    &\geq 2m(E \cap I) - 2|x_n| \\
-    &> \frac{3}{2}m(I) - \frac{1}{2}m(I) \\
-    &= m(I)
-\end{align*}
-which is a contradiction.
-\end{proof}
-
-\begin{question}
-Let $f : \mathbb{R} \to \mathbb{R}$ be a Lebesgue measurable function such that
-\[ f(x+y) = f(x) + f(y) \]
-Show that $f(x) = ax$ for some $a \in \mathbb{R}$. \textbf{Hint:} Apply Lusin's theorem and the previous problem.
-\end{question}
-\begin{proof}
-Use Lusin's theorem to get a closed set $F$ with $m(F^c) < 1/2$ and a continuous $g: F \to \R$ such that $f = g$ on $F$. By question 1, we can also restrict $F$ to a compact set while keeping $m(F) > 0$. We can then apply question 4 to get an open interval $(-M, M)$ contained in $F - F$. Since $F$ is compact, $g$ is also uniformly continuous on $F$, so given an $\varepsilon > 0$, there is some $\delta > 0$ for which $|g(x) - g(y)| < \varepsilon$ for any $x, y \in F, |x - y| < \delta$. For any $h \in (-\delta, \delta)$, we take $x \in F$ for which $h = (x + h) - x \in F - F$ and get $f(h) = f(x + h) - f(x) = g(x + h) - g(x) \implies |f(h)| < \varepsilon$. This shows that $f$ is continuous at 0. For any arbitrary $x_0 \in \R$, we can write $f(x + x_0) = f(x) + f(x_0)$ which shows that $f$ is continuous at $x_0$, therefore $f$ is continuous on $\R$. By continuity, it then suffices to only show that $f(x) = ax$ on $x \in \Q$.
-
-Set $a := f(1)$. $f(0) = f(0) + f(0) \implies f(0) = 0$ and for any $x \in \Q$, we have $f(-x) = f(0) - f(x) = -f(x)$. For any $n \in \N$, we have $f(n) = \sum_{i = 1}^n f(1) = an$, and $f(-n) = -f(n) = -an$, so $f(x) = ax$ on $\Z$. For any $n \in \N$, we have $nf(1/n) = f(1) = a \implies f(1/n) = a/n$ and for any $p, q \in \N$, we have $qf(p/q) = f(p) = ap \implies f(p/q) = ap/q$, so for any $x \in \Q, f(x) = ax$. As noted earlier, continuity of $f$ shows that $f(x) = ax$ on $\R$.
-\end{proof}
-
-\begin{question}
-Construct a non-linear $f : \mathbb{R} \to \mathbb{R}$ obeying $f(x+y) = f(x) + f(y)$ for all $x, y \in \mathbb{R}$. (Hint: consider $\mathbb{R}$ as a vector space with scalar field $\mathbb{Q}$)
-\end{question}
-\begin{proof}
-Take a basis $\beta$ for $\R$ as a vector space over $\Q$. This gives us a unique expression of any real number $x$ as $q_1e_1 + \cdots + q_ne_n$ for $q_i \in \Q \setminus \{0\}, e_i \in \beta$. This lets us define $f$ by $q_1e_1 + \cdots + q_ne_n \mapsto q_1 + \cdots + q_n$. This function is obviously additive, but it cannot be continuous on $\R$, since its image is the disconnected set $\Q$. Hence it is not linear.
 \end{proof}
 
 \end{document}
