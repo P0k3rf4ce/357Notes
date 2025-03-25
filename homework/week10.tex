@@ -163,9 +163,8 @@ No. Let $E$ be any non-measurable set and define $f(x) = e^x(2\chi_E(x) - 1)$. N
 \begin{question}[Royden 3.5]
 Suppose the function $f$ is defined on a measurable set $E$ and has the property that $\{x \in E \mid f(x) > c\}$ is measurable for each rational number $c$. Is $f$ necessarily measurable?
 \end{question}
-
 \begin{proof}
-
+It suffices to show that $f^{-1}((c, \infty))$ is measurable for any real $c$. By density of $\Q$, we can take a rational sequence $c_n > c$ such that $c_n \to c$. We then see that $\bigcup_{n = 1}^\infty (c_n, \infty) = (c, \infty)$ and hence $f^{-1}((c, \infty)) = \bigcup_{n = 1}^\infty f^{-1}((c_n, \infty))$ is measurable as a countable union of measurable sets.
 \end{proof}
 
 \begin{question}[Royden 3.6]
