@@ -185,15 +185,15 @@ Note that for $c \geq 0$, we have $g^{-1}((c, \infty)) = f^{-1}(c, \infty)$ and 
 \begin{question}[Royden 3.13]
 A real-valued measurable function is said to be \textit{semisimple} provided it takes only a countable number of values. Let $f$ be any measurable function on $E$. Show that there is a sequence of semisimple functions $\{f_n\}$ on $E$ that converges to $f$ uniformly on $E$.
 \end{question}
-
 \begin{proof}
+We note that if $f$ is extended real-valued then this is not possible since $|f(x) - \varphi(x)| = \infty$ for any $x$ such that $f(x) = \pm \infty$ and any real-valued $\varphi$. We thus assume that $f$ is real-valued. Also by writing $f$ as a difference of its positive and negative parts (which are measurable), we may assume that $f$ is nonnegative.
 
+Define $E_n$ to be the measurable set $E_n := f^{-1}([n, n + 1))$, which are mutually disjoint and cover $E$. For each $n$, the restriction $f_n$ of $f$ to $E_n$ is a bounded measurable function, so for any $\varepsilon > 0$, $f$ can be approximated by simple functions $\varphi_n^\varepsilon, \psi_n^\varepsilon$ on $E_n$, that is $\varphi_n^\varepsilon \leq f_n \leq \psi_n^\varepsilon$ and $0 \leq \psi_n^\varepsilon - \varphi_n^\varepsilon < \varepsilon$. Also by extending $\varphi_n^\varepsilon, \psi_n^\varepsilon$ to $E$ in the way of Royden 3.6, we get that $\varphi_n^\varepsilon, \psi_n^\varepsilon$ are simple functions on $E$. We define the semisimple functions $\varphi^\varepsilon = \sum_{i = 0}^\infty \varphi_n^\varepsilon, \psi^\varepsilon = \sum_{i = 0}^\infty \psi_n^\varepsilon$ and note that their restrictions to each $E_n$ are precisely $\varphi_n^\varepsilon, \psi_n^\varepsilon$. This implies that $\varphi^\varepsilon \leq f \leq \psi^\varepsilon$ and $0 \leq \psi^\varepsilon - \varphi^\varepsilon < \varepsilon$ on $E$, and hence $0 \leq f - \varphi^\varepsilon \leq \psi^\varepsilon - \varphi^\varepsilon < \varepsilon$. The result follows by taking the sequence $\varphi^{1/n}$.
 \end{proof}
 
 \begin{question}[Royden 3.14]
 Let $f$ be a measurable function on $E$ that is finite a.e. on $E$ and $m(E) < \infty$. For each $\epsilon > 0$, show that there is a measurable set $F$ contained in $E$ such that $f$ is bounded on $F$ and $m(E \setminus F) < \epsilon$.
 \end{question}
-
 \begin{proof}
 
 \end{proof}
@@ -201,7 +201,6 @@ Let $f$ be a measurable function on $E$ that is finite a.e. on $E$ and $m(E) < \
 \begin{question}[Royden 3.26]
 For the function $f$ and the set $F$ in the statement of Lusin's Theorem, show that the restriction of $f$ to $F$ is a continuous function. Must there be any points at which $f$, considered as a function on $E$, is continuous?
 \end{question}
-
 \begin{proof}
 
 \end{proof}
@@ -209,7 +208,6 @@ For the function $f$ and the set $F$ in the statement of Lusin's Theorem, show t
 \begin{question}[Royden 3.27]
 Show that the conclusion of Egoroff's Theorem can fail if we drop the assumption that the domain has finite measure.
 \end{question}
-
 \begin{proof}
 
 \end{proof}
@@ -217,7 +215,6 @@ Show that the conclusion of Egoroff's Theorem can fail if we drop the assumption
 \begin{question}[Royden 3.29]
 Prove the extension of Lusin's Theorem to the case that $E$ has infinite measure.
 \end{question}
-
 \begin{proof}
 
 \end{proof}
