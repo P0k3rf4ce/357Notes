@@ -308,7 +308,7 @@ Set $a := f(1)$. $f(0) = f(0) + f(0) \implies f(0) = 0$ and for any $x \in \Q$, 
 Construct a non-linear $f : \mathbb{R} \to \mathbb{R}$ obeying $f(x+y) = f(x) + f(y)$ for all $x, y \in \mathbb{R}$. (Hint: consider $\mathbb{R}$ as a vector space with scalar field $\mathbb{Q}$)
 \end{question}
 \begin{proof}
-	
+Take a basis $\beta$ for $\R$ as a vector space over $\Q$. This gives us a unique expression of any real number $x$ as $q_1e_1 + \cdots + q_ne_n$ for $q_i \in \Q \setminus \{0\}, e_i \in \beta$. This lets us define $f$ by $q_1e_1 + \cdots + q_ne_n \mapsto q_1 + \cdots + q_n$. This function is obviously additive, but it cannot be continuous on $\R$, since its image is the disconnected set $\Q$. Hence it is not linear.
 \end{proof}
 
 \end{document}
