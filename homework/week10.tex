@@ -156,9 +156,8 @@ Take a basis $\beta$ for $\R$ as a vector space over $\Q$. This gives us a uniqu
 \begin{question}[Royden 3.4]
 Suppose $f$ is a real-valued function on $\mathbb{R}$ such that $f^{-1}(c)$ is measurable for each number $c$. Is $f$ necessarily measurable?
 \end{question}
-
 \begin{proof}
-
+No. Let $E$ be any non-measurable set and define $f(x) = e^x(2\chi_E(x) - 1)$. Notice that $f^{-1}((0, \infty)) = E$ and $f^{-1}((-\infty, 0)) = E^c$, so we already see that $f$ is not measurable. Furthermore, if $f(x) = f(y)$, we have either $x, y \in E$ or $x, y \in E^c$, so in either case $e^x = e^y \implies x = y$, and hence $f^{-1}(c)$ for any $c \in \R$ is either empty or a singleton, hence measurable.
 \end{proof}
 
 \begin{question}[Royden 3.5]
@@ -211,14 +210,6 @@ For the function $f$ and the set $F$ in the statement of Lusin's Theorem, show t
 
 \begin{question}[Royden 3.27]
 Show that the conclusion of Egoroff's Theorem can fail if we drop the assumption that the domain has finite measure.
-\end{question}
-
-\begin{proof}
-
-\end{proof}
-
-\begin{question}[Royden 3.28]
-Show that Egoroff's Theorem continues to hold if the convergence is pointwise a.e. and $f$ is finite a.e.
 \end{question}
 
 \begin{proof}
