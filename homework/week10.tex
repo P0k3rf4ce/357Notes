@@ -148,7 +148,7 @@ Set $a := f(1)$. $f(0) = f(0) + f(0) \implies f(0) = 0$ and for any $x \in \Q$, 
 Construct a non-linear $f : \mathbb{R} \to \mathbb{R}$ obeying $f(x+y) = f(x) + f(y)$ for all $x, y \in \mathbb{R}$. (Hint: consider $\mathbb{R}$ as a vector space with scalar field $\mathbb{Q}$)
 \end{question}
 \begin{proof}
-Take a basis $\beta$ for $\R$ as a vector space over $\Q$. This gives us a unique expression of any real number $x$ as $q_1e_1 + \cdots + q_ne_n$ for $q_i \in \Q \setminus \{0\}, e_i \in \beta$. This lets us define $f$ by $q_1e_1 + \cdots + q_ne_n \mapsto q_1 + \cdots + q_n$. This function is obviously additive, but it cannot be continuous on $\R$, since its image is the disconnected set $\Q$. Hence it is not linear.
+Take a basis $\beta$ for $\R$ as a vector space over $\Q$. This gives us a unique expression of any real number $x$ as $q_1e_1 + \cdots + q_n e_n$ for $q_i \in \Q \setminus \{0\}, e_i \in \beta$. This lets us define $f$ by $q_1e_1 + \cdots + q_n e_n \mapsto q_1 + \cdots + q_n$. This function is obviously additive, but it cannot be continuous on $\R$, since its image is the disconnected set $\Q$. Hence it is not linear.
 \end{proof}
 
 \section{Royden Chapter 3}
@@ -192,17 +192,17 @@ Define $E_n$ to be the measurable set $E_n := f^{-1}([n, n + 1))$, which are mut
 \end{proof}
 
 \begin{question}[Royden 3.14]
-Let $f$ be a measurable function on $E$ that is finite a.e. on $E$ and $m(E) < \infty$. For each $\epsilon > 0$, show that there is a measurable set $F$ contained in $E$ such that $f$ is bounded on $F$ and $m(E \setminus F) < \epsilon$.
+Let $f$ be a measurable function on $E$ that is finite a.e.\ on $E$ and $m(E) < \infty$. For each $\epsilon > 0$, show that there is a measurable set $F$ contained in $E$ such that $f$ is bounded on $F$ and $m(E \setminus F) < \epsilon$.
 \end{question}
 \begin{proof}
-Let $E_0$ be the set of measure zero on which $f$ is infinite. Consider the increasing collection $\{F_n := f^{-1}((-n, n))\}_{n = 1}^\infty$ of measurable sets and note that the union over it is $E \setminus E_0$. By continuity of measure, we have $m(E) = m(E \setminus E_0) = m(\bigcup_{n = 1}^\infty F_n) = \lim_{n \to \infty} m(F_n)$. For any $\varepsilon > 0$, we have $0 \leq m(E) - m(F_n) < \varepsilon$ for large enough $n$, hence there is a measurable $F_n \subseteq E$ for which $m(E \setminus F_n) = m(E) - m(F_n) < \varepsilon$ and $f(F_n) \subseteq (-n, n)$ is bounded.
+Let $E_0$ be the set of measure zero on which $f$ is infinite. Consider the increasing collection\\ ${\{F_n := f^{-1}((-n, n))\}}_{n = 1}^\infty$ of measurable sets and note that the union over it is $E \setminus E_0$. By continuity of measure, we have $m(E) = m(E \setminus E_0) = m(\bigcup_{n = 1}^\infty F_n) = \lim_{n \to \infty} m(F_n)$. For any $\varepsilon > 0$, we have $0 \leq m(E) - m(F_n) < \varepsilon$ for large enough $n$, hence there is a measurable $F_n \subseteq E$ for which $m(E \setminus F_n) = m(E) - m(F_n) < \varepsilon$ and $f(F_n) \subseteq (-n, n)$ is bounded.
 \end{proof}
 
 \begin{question}[Royden 3.26]
 For the function $f$ and the set $F$ in the statement of Lusin's Theorem, show that the restriction of $f$ to $F$ is a continuous function. Must there be any points at which $f$, considered as a function on $E$, is continuous?
 \end{question}
 \begin{proof}
-
+The result of Lusin's theorem is that $f = g$ on $F$ for a continuous function $g: \R \to \R$. Since $g$ is continuous on $F$, then so must be $f$. $f$ as a function on $E$ might not be continuous at any point however. As an example, consider the simple function $f = \chi_{\Q \cap [0, 1]}: [0, 1] \to \R$ which is discontinuous everywhere on $[0, 1]$, but by Lusin's theorem can be restricted to a continuous function.
 \end{proof}
 
 \begin{question}[Royden 3.27]
