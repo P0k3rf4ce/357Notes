@@ -209,7 +209,7 @@ The result of Lusin's theorem is that $f = g$ on $F$ for a continuous function $
 Show that the conclusion of Egoroff's Theorem can fail if we drop the assumption that the domain has finite measure.
 \end{question}
 \begin{proof}
-
+Consider the sequence of functions $f_n: \R \to \R: x \mapsto x/n$ which converges pointwise to the zero function. For any set $F \subseteq \R$, in order to have $m(\R \setminus F) < 1$, we must have that $F$ is unbounded. For any $N > 0$, we may find $x \in F \setminus (-N, N)$ for which we have $|f_N(x)| = |x/N| \geq 1$, so the convergence $f_n \to f$ cannot be uniform.
 \end{proof}
 
 \begin{question}[Royden 3.29]
