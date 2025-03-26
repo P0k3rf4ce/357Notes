@@ -216,7 +216,8 @@ Consider the sequence of functions $f_n: \R \to \R: x \mapsto x/n$ which converg
 Prove the extension of Lusin's Theorem to the case that $E$ has infinite measure.
 \end{question}
 \begin{proof}
-
+Apply Lusin's theorem for domains of finite measure to get for each $n \in \Z$ a continuous $g_n: \R \to \R$ and a closed set $F_n \subseteq (n, n + 1) \cap E$ with $m(E \cap (n, n + 1) \setminus F_n) < \varepsilon/(3 \cdot 2^{|n|})$ for which $f = g_n$ on $F_n$. One can then show that with this construction, $F := \bigcup_{n \in \Z} F_n$ is closed, and we have 
+\[ m(E \setminus F) = \sum_{n \in \Z} m(E \cap (n, n + 1) \setminus F_n) < \sum_{n \in \Z} \frac{\varepsilon}{3 \cdot 2^{|n|}} = \varepsilon \]
 \end{proof}
-
+We then note that each $F_n$ is compact, so $a_n := \operatorname{dist}(n, F_n), b_n := \operatorname{dist}(n + 1, F_n)$ are nonzero. This allows us to construct a continuous function $g: \R \to \R$ by defining it to be $g_n$ on $[n + a_n, n + 1 - b_n]$ and extending it linearly everywhere else. By construction, $g = f$ on $F$, as required.
 \end{document}
