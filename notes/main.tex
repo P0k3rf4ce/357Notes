@@ -248,4 +248,41 @@ Let $E_0 = \{x \in E: \lim_{n \to \infty} f_n(x) = f(x), f_n(x) \leq f_{n + 1}(x
 \[ \lim_{n \to \infty} \int_E f_n = \lim_{n \to \infty} \int_E f_n (\mathds{1}_{E_0} + \mathds{1}_{E \setminus E_0}) = \lim_{n \to \infty} \int_E f_n \mathds{1}_{E_0} + \int_E f_n \mathds{1}_{E \setminus E_0} = \int_E \lim_{n \to \infty} f_n \mathds{1}_{E_0} = \int_{E_0} f = \int_E f \]
 \end{proof}
 
+\begin{thm}[Fatou's lemma]
+If $f_n: E \to [0, \infty]$ are measurable then 
+\[ \int_E \liminf_{n \to \infty} f_n \leq \liminf_{n \to \infty} \int_E f_n. \]
+In particular, if $f_n \to f$ a.e. then $\int_E f \leq \liminf_{n \to \infty} \int_E f_n$.
+\end{thm}
+\begin{proof}
+\[ \int_E \liminf_{n \to \infty} f_n = \int_E \lim_{n \to \infty}\left(\inf_{k \geq n} f_k\right) = \lim_{n \to \infty} \int_E \inf_{k \geq n} f_k \leq \lim_{n \to \infty}\inf_{k \geq n} \int_E f_k = \liminf_{n \to \infty} \int_E f_n \]
+\end{proof}
+
+\begin{thm}[Markov's inequality]
+If $f: E \to [0, \infty]$ is measurable then for all $\alpha > 0$, $m(f^{-1}([\alpha, \infty])) \leq \frac{1}{\alpha} \int_E f$.
+\end{thm}
+\begin{proof}
+Let $F = f^{-1}([\alpha, \infty])$, then $f(x)/\alpha \geq 1$ on $F$, so 
+\[ m(F) = \int_E \mathds{1}_F \leq \int_E \mathds{1}_F \frac{f}{\alpha} \leq \frac{1}{\alpha}\int_E f \]
+\end{proof}
+
+\begin{cor}
+If $t > 0$, $m(f^{-1}([\alpha, \infty])) \leq e^{-t\alpha}\int_E e^{tf}$.
+\end{cor}
+\begin{proof}
+Holds since $m(f^{-1}([\alpha, \infty])) = m((e^{tf})^{-1}([\alpha, \infty]))$.
+\end{proof}
+
+\begin{cor}
+If $\int_E f < \infty$ then $f(x)$ is finite a.e.
+\end{cor}
+\begin{proof}
+$m(f^{-1}(\infty)) \leq m(f^{-1}([n, \infty])) \leq \frac{1}{n}\int_E f \to 0$.
+\end{proof}
+
+\subsection{Integral for general $f: E \to \cl{R}$}
+
+\begin{defn}
+We say that a measurable $f: E \to \cl{R}$ is integrable if $\int_E f_+ + \int_E f_- = \int_E |f| < \infty$. If $f$ is integrable then we define $\int_E f = \int_E f_+ - \int_E f_-$
+\end{defn}
+
 \end{document}
