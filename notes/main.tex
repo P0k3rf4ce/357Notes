@@ -240,4 +240,12 @@ If $\int_E f = 0$, consider the set $f^{-1}((0, \infty]) = \bigcup_{k = 1}^\inft
 Thus $m(E_k) = 0$ so $m(f^{-1}((0, \infty])) = \lim_{n \to \infty} m(E_k) = 0$. Since the set on which $f > 0$ is of measure zero, we have $f = 0$ a.e. on $E$.
 \end{proof}
 
+\begin{thm}[Better MCT]
+Let $f_n, f: E \to [0, \infty]$ be measurable. Assume that $f_n \leq f_{n + 1}$ a.e. and assume $f = \lim_{n \to \infty} f_n$ a.e. on $E$. Then $\lim_{n \to \infty} \int_E f_n = \int_E f$
+\end{thm}
+\begin{proof}
+Let $E_0 = \{x \in E: \lim_{n \to \infty} f_n(x) = f(x), f_n(x) \leq f_{n + 1}(x)\}$. Then $m(E \setminus E_0) = 0$ ($E \setminus E_0$ is a union of sets of measure zero). Now, we have 
+\[ \lim_{n \to \infty} \int_E f_n = \lim_{n \to \infty} \int_E f_n (\mathds{1}_{E_0} + \mathds{1}_{E \setminus E_0}) = \lim_{n \to \infty} \int_E f_n \mathds{1}_{E_0} + \int_E f_n \mathds{1}_{E \setminus E_0} = \int_E \lim_{n \to \infty} f_n \mathds{1}_{E_0} = \int_{E_0} f = \int_E f \]
+\end{proof}
+
 \end{document}
