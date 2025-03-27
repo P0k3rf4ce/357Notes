@@ -285,4 +285,15 @@ $m(f^{-1}(\infty)) \leq m(f^{-1}([n, \infty])) \leq \frac{1}{n}\int_E f \to 0$.
 We say that a measurable $f: E \to \cl{R}$ is integrable if $\int_E f_+ + \int_E f_- = \int_E |f| < \infty$. If $f$ is integrable then we define $\int_E f = \int_E f_+ - \int_E f_-$
 \end{defn}
 
+\begin{lemma}
+Integrable functions form a vector space in that if $f, g$ are integrable functions then so is $f + g$ and if $f$ is integrable then so is $\lambda f$ for any $\lambda \in \R$.
+\end{lemma}
+\begin{proof}
+Note that $\int_E |f + g| \leq \int_E |f| + \int_E |g| < \infty$ and $\int_E |\lambda f| = |\lambda|\int_E |f| < \infty$ which proves the lemma.
+\end{proof}
+
+\begin{exercise}
+Check that $\int_E \alpha f + \beta g = \alpha\int_E f + \beta\int_E g$ for all integrable $f, g$ and constants $\alpha, \beta$.
+\end{exercise}
+
 \end{document}
