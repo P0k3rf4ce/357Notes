@@ -313,4 +313,12 @@ Since $\int_E g = \int_E |g| < \infty$, we get
 Thus we have $\lim_{n \to \infty} \int_E f_n = \int_E f$.
 \end{proof}
 
+\begin{example}
+If $E$ satisfies $m(E) < \infty$ and there is $B > 0$ s.t. $|f_n| \leq B$ a.e. then $\int_E \lim_{n \to \infty} f_n = \lim_{n \to \infty} \int_E f_n$ by DCT with $g = B$.
+\end{example}
+
+\begin{defn}
+If $f, g: E \to \cl{R}$ are measurable we say that $f \sim g$ if $f = g$ a.e. This is an equivalence relation. Let $\mathcal{F}$ be the set of equivalence classes and define $\alpha[f] + \beta[g] = [\alpha f + \beta g]$. It is easy to check that this gives a well-defined definition of addition and scalar multiplication. For $1 \leq p < \infty$, we define $L^p(E)$ to be the set of all $[f] \in \mathcal{F}$ such that $\norm{f}_{L^p(E)} := \left(\int_E |f|^p \right)^{1/p} < \infty$.
+\end{defn}
+
 \end{document}
