@@ -296,4 +296,21 @@ Note that $\int_E |f + g| \leq \int_E |f| + \int_E |g| < \infty$ and $\int_E |\l
 Check that $\int_E \alpha f + \beta g = \alpha\int_E f + \beta\int_E g$ for all integrable $f, g$ and constants $\alpha, \beta$.
 \end{exercise}
 
+\begin{exercise}
+Check that Fatou's lemma holds if $f_n \geq 0$ a.e.
+\end{exercise}
+
+\begin{thm}[Dominated Convergence Theorem]
+Let $f_n: E \to \cl{R}$ be a sequence of measurable functions that converge pointwise a.e. to some $f: E \to \cl{R}$. Assume that there is an integrable $g$ such that $|f_n| \leq g$ a.e. Then $\lim_{n \to \infty} \int_E f_n = \int_E f$.
+\end{thm}
+\begin{proof}
+By assumptions, $g + f_n, g - f_n$ are nonnegative a.e. so we can apply Fatou's lemma. This gives us 
+\[ \int_E g + \int_E f = \int_E g + f = \int_E \lim_{n \to \infty}(g + f_n) \leq \liminf_{n \to \infty} \int_E g + f_n = \int_E g + \liminf_{n \to \infty}\int_E f_n \]
+Similarly, we have 
+\[ \int_E g - \int_E f \leq \int_E g + \liminf_{n \to \infty} \int_E -f_n = \int_E g - \limsup_{n \to \infty} \int_E f_n \]
+Since $\int_E g = \int_E |g| < \infty$, we get 
+\[ \int_E f \leq \liminf_{n \to \infty} \int_E f_n \leq \limsup_{n \to \infty} \int_E f_n \leq \int_E f \]
+Thus we have $\lim_{n \to \infty} \int_E f_n = \int_E f$.
+\end{proof}
+
 \end{document}
