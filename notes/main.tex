@@ -195,4 +195,23 @@ Then take $F \subseteq E_k$ with $F$ closed and $m(E_k \setminus F) < \varepsilo
 Take $\varphi_n$ simple functions such that $\varphi$ converge to $f$ pointwise and let $g_n$ be a sequence of continuous functions such that $g_n = \varphi_n$ on a closed set $F_k$ with $m(E \setminus F_n) \leq \varepsilon / 2^n$. By Egorov, there is a closed $G \subseteq E$ with $m(E \setminus G) < \varepsilon$ such that $\varphi_n \to f$ uniformly on $G$. Take $F = \left(\bigcap_{n = 1}^\infty F_n\right) \cap G$. Then $F$ is closed and $m(E \setminus F) \subseteq m(E \setminus G) + \sum_n m(E \setminus F_n) \leq 2\varepsilon$. On $F$, we have $g_n = \varphi_n$ for all $n$, so $g_n \to f$ uniformly on $F$. Thus the funciton $g(x) = \lim_{n \to \infty} g_n(x)$ for $x \in F$ in continuous.
 \end{proof}
 
+\section{Week 11}
+
+\begin{defn}
+We define \[ \int_E \sum_{j = 1}^n \alpha_j \mathds{1}_{E_j} = \sum_{j = 1}^n \alpha_j m(E_j) \]
+and 
+\[ \int_E f = \sup\left\{\int_E \varphi: \varphi \leq f, \varphi \text{ simple} \right\} \]
+\end{defn}
+
+\begin{thm}
+Let $f_n: E \to [0, \infty]$ be measurable, $f_n \leq f_{n + 1}$ for all $n$. Let $f = \lim_{n \to \infty} f_n$ pointwise. Then $\lim_{n\to \infty} \int_E f_n = \int_E f$.
+\end{thm}
+\begin{proof}
+Since $f_n \leq f$, we have $\int_E f_n \leq \int_E f \implies \lim_{n\to\infty}\int_E f_n \leq \int_E f$. Let $0 < \alpha < 1$ and let $\varphi: E \to [0, \infty)$ be simple with $\varphi \leq f$. Suffices to show that $\lim_{n \to \infty} \int_E f_n \geq \alpha\int_E \varphi$. Let $E_k = \{x \in E: f_k(x) \geq \alpha \varphi(x)\}$ and note that $E_k \subseteq E_{k + 1}$ and $E = \bigcup_{k = 1}^\infty E_k$. We then have
+\[ \lim_{n \to \infty} \int_E f_n \geq \int_E f_k \geq \int_E \mathds{1}_{E_k} f_k \geq \int_E \mathds{1}_{E_k} \alpha \varphi = \alpha\int_E \mathds{1}_{E_k} \varphi \]
+Writing $\varphi = \sum_{j = 1}^n \alpha_j\mathds{1}_{F_j}$, we have
+\[ \alpha\int_E \mathds{1}_{E_k} \varphi = \alpha\sum_{j = 1}^n \alpha_j m(F_j \cap E_k) \leq \lim_{n \to \infty} \int_E f_n \]
+This holds for all $k$ so take $k \to \infty$. Since $F_j \cap E_k \subseteq F_j \cap E_{k + 1}$ for all $k$ and $\bigcup_{k = 1}^\infty F_j \cap E_k = F_j$ so by continuity of measure $\lim_{n \to \infty} m(F_j \cap E_n) = m(F_j)$. Thus we have $\lim_{n \to \infty} \int_E f_n \geq \alpha \sum_{j = 1}^n \alpha_j m(F_j) = \alpha \int_E \varphi$. Taking $\alpha \to 1$ and using the definiion of Lebesgue integral, we see that $\lim_{n \to \infty} \int_E f_n \geq \int_E f$. Hence the equality holds.
+\end{proof}
+
 \end{document}
