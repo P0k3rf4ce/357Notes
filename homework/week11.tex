@@ -92,9 +92,14 @@ Let $f : E \to [0, \infty]$ satisfy $\int_E f < \infty$. Let $A_n \subseteq A_{n
 \lim_{n \to \infty} \int_E f \mathds{1}_{A_n} = 0
 \]
 \end{question}
-
 \begin{proof}
-
+Let $\varepsilon > 0$ and let $\varphi: E \to [0, \infty]$ be a simple function satisfying $\varphi \leq f$ and $(\int_E f) - \varepsilon < \int_E \varphi$. We then have the following chain of inequalities for any $n$:
+\[ 0 \leq \int_E (f - \varphi)\mathds{1}_{A_n} \leq \int_E (f - \varphi)\mathds{1}_{A_n} + \int_E (f - \varphi)\mathds{1}_{A_n^c} = \int_E (f - \varphi) < \varepsilon \]
+Now we write $\varphi = \sum_{j = 1}^k \alpha_j \mathds{1}_{E_j}$ for some $E_j \subseteq E$ and get 
+\[ \int_E \varphi\mathds{1}_{A_n} = \int_E \sum_{j = 1}^k \alpha_j \mathds{1}_{E_j \cap A_n} \leq \sum_{j = 1}^k \alpha_j m(A_n) \]
+which approaches 0 as $n \to \infty$. We then have 
+\[ \int_E f\mathds{1}_{A_n} < \int_E \varphi\mathds{1}_{A_n} + \varepsilon \longimplies 0 \leq \limsup_{n \to \infty} \int_E f\mathds{1}_{A_n} \leq \lim_{n \to \infty}\int_E \varphi\mathds{1}_{A_n} + \varepsilon = \varepsilon \]
+Since the above holds for all $\varepsilon > 0$, the limsup, hence the limit itself, of $\int_E f\mathds{1}_{A_n}$ as $n \to \infty$ is 0.
 \end{proof}
 
 \begin{question}
