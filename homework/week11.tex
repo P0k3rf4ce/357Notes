@@ -105,9 +105,10 @@ Since the above holds for all $\varepsilon > 0$, the limsup, hence the limit its
 \begin{question}
 Let $E$ be Lebesgue measurable with $m(E) > 0$. Show that there exists $p \in E$ so that $m(E \cap \{x : |x - p| < \varepsilon \}) > 0$ for all $\varepsilon > 0$. (Problem suggested by a student.)
 \end{question}
-
 \begin{proof}
-
+Let $\varepsilon > 0$ and consider the sets $E_n := (n\varepsilon, (n + 1)\varepsilon) \cap E$ and note that the union of all $E_n$ for $n \in \Z$ is $E \setminus \{n\varepsilon: n \in \Z\}$ which has the same measure as $E$. We then have 
+\[ m(E) = \sum_{n \in \Z} m(E_n) \]
+and since $m(E) > 0$, we cannot have $m(E_n) = 0$ for all $n$. Thus for some $n \in \Z$, $m(E_n) > 0$, so we can take any $p \in E_n = (n\varepsilon, (n + 1)\varepsilon) \cap E$ and we will have $(p - \varepsilon, p + \varepsilon) \supseteq (n\varepsilon, (n + 1)\varepsilon)$, hence $m(E \cap (p - \varepsilon, p + \varepsilon)) \geq m(E_n) > 0$ as required.
 \end{proof}
 
 \begin{question}
