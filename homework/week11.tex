@@ -129,7 +129,7 @@ and hence the desired limit identity holds. For $\int_\R |f_n - f| \to 0$, we no
 \begin{align*}
     2\int_\R f 
     &= \int_\R \liminf_{n \to \infty} (f + f_n - |f_n - f|) \\
-    &= \liminf_{n \to \infty} \int_\R (f + f_n - |f_n - f|) \\
+    &\leq \liminf_{n \to \infty} \int_\R (f + f_n - |f_n - f|) \\
     &= \int_\R f + \liminf_{n \to \infty} \int_\R f_n - \limsup_{n \to \infty} \int_\R |f_n - f| \\
     &= 2\int_\R f - \limsup_{n \to \infty} \int_\R |f_n - f| \\
     \longimplies 0 \leq \lim_{n \to \infty} \int_\R |f_n - f| &\leq \limsup_{n \to \infty} \int_\R |f_n - f| \leq 0
@@ -143,9 +143,8 @@ Let $f_n : E \to [0, \infty]$ be a decreasing sequence of Lebesgue measurable fu
 \lim_{n \to \infty} \int_E f_n = \int_E f
 \]
 \end{question}
-
 \begin{proof}
-
+Just apply DCT with $g = f_1$.
 \end{proof}
 
 \begin{question}
