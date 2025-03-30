@@ -122,9 +122,19 @@ Show that
 \]
 for every measurable $E$. Show that this may fail if $\lim_{n \to \infty} \int_{\mathbb{R}} f_n = \int_{\mathbb{R}} f = \infty$.
 \end{question}
-
 \begin{proof}
-
+Note that if we show that $\int_\R |f_n - f| \to 0$, then we will have 
+\[ 0 \leq \left|\int_\R \mathds{1}_E f_n - \int_\R \mathds{1}_E f\right| \leq \int_\R \mathds{1}_E \left|f_n - f\right| \leq \int_\R \left|f_n - f\right| \to 0 \]
+and hence the desired limit identity holds. For $\int_\R |f_n - f| \to 0$, we note that $f + f_n - |f_n - f|$ is either $f$ or $f_n$ for each $x$, hence nonnegative, and its liminf is $2f$. We thus have by Fatou's lemma
+\begin{align*}
+    2\int_\R f 
+    &= \int_\R \liminf_{n \to \infty} (f + f_n - |f_n - f|) \\
+    &= \liminf_{n \to \infty} \int_\R (f + f_n - |f_n - f|) \\
+    &= \int_\R f + \liminf_{n \to \infty} \int_\R f_n - \limsup_{n \to \infty} \int_\R |f_n - f| \\
+    &= 2\int_\R f - \limsup_{n \to \infty} \int_\R |f_n - f| \\
+    \longimplies 0 \leq \lim_{n \to \infty} \int_\R |f_n - f| &\leq \limsup_{n \to \infty} \int_\R |f_n - f| \leq 0
+\end{align*}
+Thus we see that $\lim_{n \to \infty} \int_\R |f_n - f| = 0$, which completes the proof.
 \end{proof}
 
 \begin{question}
