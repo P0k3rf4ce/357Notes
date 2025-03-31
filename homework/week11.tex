@@ -234,8 +234,14 @@ Let $f$ be integrable over $E$ and $C$ a measurable subset of $E$. Show that
 \int_C f = \int_E f \cdot \chi_C.
 \]
 \end{question}
-
 \begin{proof}
+Let $\varphi: C \to [0, \infty]$ simple such that $\varphi \leq f$ and write $\varphi = \sum_{j = 1}^n \alpha_j\mathds{1}_{F_j}$ in its canonical form. Then $\varphi \cdot \mathds{1}_C: E \to [0, \infty]$ is a simple function satisfying $\varphi \cdot \mathds{1}_C \leq f \cdot \mathds{1}_C$, so we have 
+\[ \int_C \varphi = \sum_{j = 1}^n \alpha_j m(F_j) = \sum_{j = 1}^n \alpha_j m(F_j \cap C) = \int_E \varphi \cdot \mathds{1}_C \leq \int_E f \cdot \mathds{1}_C \]
+Since this holds for all simple $0 \leq \varphi \leq f$, we must have 
+\[ \int_C f \leq \int_E f \cdot \mathds{1}_C \]
+Now take a simple function $\varphi: E \to [0,\infty]$ such that $\varphi \leq f \cdot \mathds{1}_C$. By noting that $\varphi$ must be zero outside of $C$, we use similar reasoning to show that 
+\[ \int_E \varphi \leq \int_E f \longimplies \int_E f \cdot \mathds{1}_C \leq \int_C f \]
+and hence \[ \int_C f = \int_E f \cdot \mathds{1}_C \]
 \end{proof}
     
 
