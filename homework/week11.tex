@@ -169,8 +169,12 @@ Let $\{f_n\}$ be a sequence of nonnegative measurable functions that converges t
 \[ \int_E f_n \leq M \quad \text{for all } n. \]
 Show that $\int_E f \leq M$. Verify that this property is equivalent to the statement of Fatou's Lemma.
 \end{question}
-
 \begin{proof}
+Since we know Fatou's lemma to be true already, we will simply prove the equivalence of the property to it. If Fatou's lemma holds, then we must have 
+\[ \int_E f \leq \liminf_{n \to \infty} \int_E f_n \leq M \]
+as required. Conversely, suppose that whenever $f_n \to f$ pointwise on $E$ with $\int_E f_n \leq M$ then $\int_E f \leq M$, and let $f_n \to f$ pointwise on $E$. If $\liminf \int_E f_n$ is infinite, then clearly the statement of Fatou's lemma holds. Otherwise, there is a subsequence $f_{n_k}$ for which $\int_E f_{n_k}$ is a sequence approaching $\liminf\int_E f_n$. Since we still have $f_{n_k} \to f$ pointwise on $E$, for any $\varepsilon > 0$, we can take $K > 0$ such that for all $k \geq K$, we have $\int_E f_{n_k} < \liminf\int_E f_n + \varepsilon$, so by our property, we conclude
+\[ \int_E f \leq \liminf_{n \to \infty} \int_E f_n + \varepsilon \]
+for all $\varepsilon > 0$. Taking $\varepsilon \to 0$, we prove Fatou's lemma where $f_n \to f$ pointwise everywhere on $E$. Since integrals over sets of measure zero are zero, this clearly extends to convergence a.e.
 \end{proof}
 
 \begin{question}[Royden 4.21]
