@@ -164,6 +164,8 @@ We can do the same for $A_n = (x - 1/n, x]$ and combine with the above to get a 
 
 \section{Royden Chapter 4}
 
+Note that Royden uses the convention that a nonnegative measurable function is integrable when its Lebesgue integral is finite.
+
 \begin{question}[Royden 4.20]
 Let $\{f_n\}$ be a sequence of nonnegative measurable functions that converges to $f$ pointwise on $E$. Let $M \geq 0$ be such that 
 \[ \int_E f_n \leq M \quad \text{for all } n. \]
@@ -183,8 +185,37 @@ Let the function $f$ be nonnegative and integrable over $E$ and $\epsilon > 0$. 
 If $E$ is a closed, bounded interval, show there is a step function $h$ on $E$ that has finite support and 
 \[ \int_E |f - h| < \epsilon. \]
 \end{question}
-
 \begin{proof}
+By definition of Lebesdue integral, we can take a simple function $\eta \leq f$ such that $\int_E f < \int_E \eta + \varepsilon/2$. This $\eta$ might not have finite support, but we can use it to construct another simple function that has finite support and has integral close to one of $\eta$. Consider the increasing sequence $E_n := E \cap (-n, n)$ and simple functions $\eta_n := \eta\mathds{1}_{E_n}$ with finite support. Since $\bigcup_{n = 1}^\infty E_n = E$, we have $\eta_n \to \eta$ pointwise, and hence by MCT
+\[ \int_E \eta = \lim_{n \to \infty} \int_E \eta_n \]
+Since the integral is finite, we can take $n$ large enough for which $0 \leq \int_E \eta - \int_E \eta_n < \varepsilon / 2$. By linearity of the integral, we have 
+\[ \int_E (f - \eta_n) + \int_E \eta_n = \int_E f \longimplies \int_E |f - \eta_n| = \left(\int_E f - \int_E \eta\right) + \left(\int_E \eta - \int_E \eta_n\right) < \varepsilon \]
+as required. 
+
+If $E = [a, b]$ for $a < b$. In this case, any step function on $E$ has finite support, so we don't need to worry about this condition. We first show that the $\eta$ found above can be approximated by a step function:
+
+\begin{lemma}
+For any simple function $\varphi$ and $\delta > 0$, we can find a step function $h: E \to [0, \infty]$ and a measurable $F \subseteq E$ such that $\varphi = h$ on $F$ and $m(E \setminus F) < \delta$.
+\end{lemma}
+\begin{proof}
+We note that a sum of finitely many step functions is also a step function, so it suffices to prove this for characteristic functions $\mathds{1}_G$ with $G \subseteq E$ measurable. We take $O = \bigcup_{k = 1}^n I_k$ where $I_k$ are disjoint open intervals such that $m(O \setminus G) + m(G \setminus O) < \delta$ (the existence of such $O$ can be proven by using outer regularity and the fact that open sets are countable unions of open intervals). We then define $h: E \to [0, \infty], x \mapsto \begin{cases}
+    1 & x \in O \\ 0 & x \notin O
+\end{cases}$, which is a step function because $O$ is a disjoint union of open intervals. We then immediately see that $h(x) = 1 = \mathds{1}_G(x)$ for $x \in G \cap O$ and $h(x) = 0 = \mathds{1}_G(x)$ for $x \in E \setminus (O \cup G)$, so for $F = (G \cap O) \cup (E \setminus (O \cup G)) \subseteq E$, we have $h = \mathds{1}_G$, and 
+\begin{align*}
+    E \setminus F 
+    &= (E \setminus (G \cap O)) \cap (O \cup G) \\
+    &= ((E \setminus (G \cap O)) \cap O) \cup ((E \setminus (G \cap O)) \cap G) \\
+    &\subseteq ((G \cap O)^c \cap O) \cup ((G \cap O)^c \cap G) \\
+    &= (O \setminus G) \cup (G \setminus O) \\
+    \longimplies m(E \setminus F) 
+    &\leq m(O \setminus G) + m(G \setminus O) < \delta
+\end{align*}
+as required.
+\end{proof}
+We take a simple $\eta$ such that $\int_E |f - \eta| < \varepsilon / 2$. Since $\eta$ is simple, it has a finite bound $M > 0$, and we apply our lemma for $\delta = \frac{\varepsilon}{4M}$ to get a step function $h: E \to [0, \infty]$ and a set $F$ such that $m(E \setminus F) < \delta$ and $\eta = h$ on $F$. By the construction in the lemma, we may assume that $h$ is bounded above by $M$, so we have 
+\[ \int_E |\eta - h| = \int_{E \setminus F} |\eta - h| \leq 2M \cdot m(E \setminus F) < \frac{\varepsilon}{2} \]
+We then have 
+\[ \int_E |f - h| \leq \int_E |f - \eta| + \int_E |\eta - h| < \varepsilon \]
 \end{proof}
 
 \begin{question}[Royden 4.25]
