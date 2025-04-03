@@ -321,4 +321,80 @@ If $E$ satisfies $m(E) < \infty$ and there is $B > 0$ s.t. $|f_n| \leq B$ a.e. t
 If $f, g: E \to \cl{R}$ are measurable we say that $f \sim g$ if $f = g$ a.e. This is an equivalence relation. Let $\mathcal{F}$ be the set of equivalence classes and define $\alpha[f] + \beta[g] = [\alpha f + \beta g]$. It is easy to check that this gives a well-defined definition of addition and scalar multiplication. For $1 \leq p < \infty$, we define $L^p(E)$ to be the set of all $[f] \in \mathcal{F}$ such that $\norm{f}_{L^p(E)} := \left(\int_E |f|^p \right)^{1/p} < \infty$.
 \end{defn}
 
+\section{Week 12}
+
+We will show that $C_c^\infty(\R) = L^p(\R)$ for $1 \leq p < \infty$ and we will study Fourier series in $L^2$.
+
+\begin{defn}
+We say that $f: \R \to \cl{\R}$ is of compact support if there is some $M > 0$ such that $f(x) = 0$ a.e. for $x \in [-M, M]$.
+\end{defn}
+
+\begin{thm}
+Smooth functions of compact support $C_c^\infty(\R)$ are dense in $L^p$ norm for $1 \leq p < \infty$.
+\end{thm}
+
+We will only do the case for $p = 1$ for notational simplicity.
+
+\begin{lemma}
+Bounded functions of compact support are dense in $L^1$.
+\end{lemma}
+\begin{proof}
+If $f \in L^1$, $f_n(x) = f(x)\mathds{1}_{\{x: |f(x)| \leq n\}}\mathds{1}_{|x| \leq n}$. We then have $f_n(x) \to f(x)$ a.e. since $f$ is finite a.e. and for large enough $n$, the indicator functions become 1 where $f$ is finite. Furthermore, we have $|f_n(x)| \leq |f(x)|$. We thus have that $|f_n(x) - f(x)| \to 0$ a.e. and $|f_n - f| \leq 2|f|$ where $\int_\R |f| < \infty$, hence by DCT, $\int_\R |f_n - f| \to 0$, meaning $\norm{f_n - f}_1 \to 0$.
+\end{proof}
+
+\begin{lemma}
+Simple functions with compact support are dense in $L^1$.
+\end{lemma}
+\begin{proof}
+In order to approximate $f \in L^1$ by simple functions, we can assume that $f$ is bounded with compact support. For all $\varepsilon > 0$, since $f$ is bounded, there is a simple function $\varphi$ such that $|\varphi(x) - f(x)| < \varepsilon$ a.e.
+
+If $f(x) = 0$ a.e. $x \notin [-M, M]$ then $\psi(x) = \varphi(x)\mathds{1}_{[-M, M]}$ then we also have $|\psi(x) - f(x)| < \varepsilon$ a.e. Then we have $\int_\R |\psi - f| = \int_\R |\psi - f|\mathds{1}_{[-M, M]} \leq \varepsilon M$. Since $M$ is a constant that depends only on $f$, we can take $\varepsilon \to 0$ to get the result.
+\end{proof}
+
+\begin{lemma}
+Let $E \subseteq [-M, M]$ for some $M > 0$ be measurable. Then there is a sequence of continuous functions of compact support $f_n$ that approximate the indicator function $\mathds{1}_E$ in $L^1$; that is $\int |\mathds{1}_E - f_n| \to 0$.
+\end{lemma}
+
+\begin{proof}
+We can find a closed $F \subseteq E$ such that $m(E \setminus F) < \varepsilon$, so we have $\int_\R |\mathds{1}_E - \mathds{1}_F| < \varepsilon$. It thus suffices to only consider the case that $E$ is closed.
+
+Let $\rho_n = x \mapsto \begin{cases}
+    1 & x \in [0, 1/n] \\
+    -n(x - 1/n) + 1 & x \in (1/n, 2/n) \\
+    0 & x \in [2/n, \infty)
+\end{cases}$ and define $f_n(x) = \rho_n(d(x, F))$, where $d(x, F) = \inf_{y \in F}|x - y|$ is continuous. We thus have that $f_n$ are continuous. Since $F$ is closed, $d(x, F)$ is 0 if and only if $x \in F$, so $f_n(x) \to \mathds{1}_F(x)$ for all $x \in \R$. Lastly, we have $|f_n(x)| \leq \mathds{1}_{[-M - 2, M + 2]}$. This means that we have $|f_n - \mathds{1}_F| \to 0$ pointwise and $|f_n - \mathds{1}_F| \leq 2 \cdot \mathds{1}_{[-M - 2, M + 2]}$, hence DCT applies to give us $\int_\R |f_n - \mathds{1}_F| \to 0$.
+\end{proof}
+
+\begin{cor}
+$C_c(\R)$ is dense in $L^1$.
+\end{cor}
+
+\begin{lemma}
+For all $M > 0$ there is a smooth function $\rho$ such that $\rho(x) = 1$ for $|x| \leq M$, $\rho(x) = 0$ for $|x| \geq M + 1$, and $0 \leq \rho \leq 1$
+\end{lemma}
+\begin{proof}
+Define $\varphi(x) = x \mapsto \begin{cases}
+    e^{-1/x} & x > 0 \\ 0 & x \leq 0
+\end{cases}$.
+\begin{exercise}
+$\varphi$ is smooth.
+\end{exercise}
+\begin{proof}
+    TODO
+\end{proof}
+
+We then define smooth $\varphi_1(x)$ by 
+\[ \varphi_1(x) = \frac{\varphi(x)\varphi(1 - x)}{\int_\R \varphi(x)\varphi(1 - x)} \]
+and we define smooth $\varphi_2$ by 
+\[ \varphi_2(x) = \int_{-\infty}^x \varphi_1(x) \]
+Then $\rho(x) = \varphi_2(x + M + 2)$
+\end{proof}
+
+\begin{lemma}
+If $f$ is continuous and of compact support then there is a sequence of smooth functions of compact support $f_n$ that approximate $f \in L^1$.
+\end{lemma}
+\begin{proof}
+Since $f$ is continuous and has support contained in $[-M, M]$, we can take a sequence of polynomials $f_n$ such that $|f_n(x) - f(x)| \leq 1/n$ for all $x \in [-M - 2, M + 2]$. Then if $\rho$ is as in the previous lemma, then $g_n(x) = \rho(x)f_n(x)$ then $|g_n(x) - f(x)| \leq 1/n$ for $x \in \R$ and $g_n(x) = 0$ for all $x \notin (-M - 1, M + 1)$. Thus we have $\int_\R |g_n - f| \to 0$.
+\end{proof}
+
 \end{document}
