@@ -104,7 +104,9 @@ Let $f : \mathbb{R} \to \mathbb{R}$ be $2\pi$-periodic and in $C^\alpha$. That i
 Show that $L^\infty$ is complete.
 \end{question}
 \begin{proof}
-
+Let $f_n$ be a Cauchy sequence in $L^\infty$. We can pass to a subsequence such that $\norm{f_k - f_{k + 1}}_\infty \leq 2^{-k}$ via a fast Cauchy argument. Let $f(x) = f_1(x) + \sum_{k = 1}^\infty (f_{k + 1}(x) - f_k(x))$. The series converges absolutely a.e. since each term is bounded by $2^{-k}$ a.e., so $f$ exists a.e., and it shows that $f$ is $L^\infty$. For convergence, notice that 
+\[ \norm{f_n - f}_\infty = \norm{f_{n + 1}(x) + \sum_{k = n + 1}^\infty (f_{k + 1}(x) - f_k(x))}_\infty \]
+which approaches zero by our bound.
 \end{proof}
 
 \begin{question}[Practice 4]
