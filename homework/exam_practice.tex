@@ -118,9 +118,8 @@ The latter limit is uniform since $g$ is $C^1$. Hence $F$ is smooth.
 \begin{question}[Practice 2]
 Show that a monotonic function $f : \mathbb{R} \to \mathbb{R}$ is Borel measurable.
 \end{question}
-
 \begin{proof}
-
+Without loss of generality, suppose $f$ is increasing. It suffices to show that for any $(a, b) \subseteq \R$, $f^{-1}(a, b)$ is Borel measurable. If it is empty or a singleton then we are done. Otherwise, we show that $f^{-1}(a, b)$ is an interval. For that, we let $x < y \in f^{-1}(a, b)$ and show that any $t \in (x, y)$ is in $f^{-1}(a, b)$. Since $f$ is increasing, we have $f(x) \leq f(t) \leq f(y)$, so $f(t) \in [f(x), f(y)] \subseteq (a, b)$, and hence $t \in f^{-1}(a, b)$. Therefore, $f$ is Borel measurable.
 \end{proof}
 
 \begin{question}[Practice 3]
