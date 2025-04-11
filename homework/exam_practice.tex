@@ -134,9 +134,10 @@ This shows that $L^p(E)$ contains only the zero function (under the equivalence 
 \begin{question}[Practice 4]
 For which $p$ are trigonometric polynomials dense in $L^p(-\pi, \pi)$?
 \end{question}
-
 \begin{proof}
-
+Recall that functions in $L^p(-\pi, \pi)$ can be approximated by continuous functions on $(-\pi, \pi)$ of bounded support. If we can show that each continuous function on $[a, b] \subseteq (-\pi, \pi)$ can be approximated by trigonometric polynomials, then we will have our result. One can use a Stone-Weierstrass Theorem argument to show that this can be done with the uniform convergence topology, so we just need to show that uniform convergence on $[a, b]$ implies $L^p$ convergence on $(-\pi, \pi)$, given that the functions are zero a.e. outside $[a, b]$. Suppose conitnuous $f_n: (-\pi, \pi) \to \cl{\R}$ converge to a continuous $f$ uniformly on $[a, b]$ and $f, f_n$ are supported in $[a, b]$. Then, we have 
+\[ \int_{(-\pi, \pi)} |f_n - f|^p \leq (b - a)\sup_{x \in [a, b]}|f_n(x) - f(x)| \to 0 \]
+as $n \to \infty$, which completes the proof.
 \end{proof}
 
 \begin{question}[Practice 5]
