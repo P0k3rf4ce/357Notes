@@ -97,9 +97,22 @@ E \to \mathrm{Im} \left[ \int_{\mathbb{R}} \frac{f(x)}{x - (E + i \eta)} \, dx \
 \]
 is smooth.
 \end{question}
-
 \begin{proof}
+Note that the function in the integral is 
+\[ \Im\left(\frac{f(x)}{x - (E + i \eta)}\right) = \Im\left(\frac{(x - E + i\eta)f(x)}{(x - E)^2 + \eta^2}\right) = \frac{\eta f(x)}{(x - E)^2 + \eta^2} \]
+Since $f$ is continuous with compact support, we have $f$ is only nonzero on $[-N, N]$ and $|f(x)| \leq M$ on this interval. We then get 
+\[ \left|\Im\left[ \int_{\mathbb{R}} \frac{f(x)}{x - (E + i \eta)} \, dx \right]\right| \leq \int_{-N}^N \frac{\eta Mdx}{(x - E)^2 + \eta^2} \leq \int_{-N}^N \frac{Mdx}{\eta} = \frac{2NM}{\eta} \to 0 \text{ as } \eta \to 0^+  \]
+This proves the first part.
 
+Let $F$ be that second function. Then we have 
+\[ F(E) = \int_\R \frac{\eta f(x)}{(x - E)^2 + \eta^2} dx = f * g(E) \]
+where $g(t) = \frac{\eta}{t^2 + \eta^2}$. Note that $g$ is smooth. It thus suffices to show that $F' = f * g'$ by repeated application of this. For any $E, h$, we have 
+\begin{align*}
+    \left|\frac{F(E + h) - F(E)}{h} - f*g'(E)\right|
+    &= \left|\frac{1}{h}\int_\R \frac{\eta f(x)}{(x - E - h)^2 + \eta^2} dx - \frac{1}{h}\int_\R \frac{\eta f(x)}{(x - E)^2 + \eta^2} dx - \int_\R g'(E - x)f(x)dx\right| \\
+    &\leq 2MN \sup_{x \in [-N, N]}\left|\frac{g(E - x + h) - g(E - x)}{h} - g'(E - x)\right| \to 0 \text{ as } h \to 0
+\end{align*}
+The latter limit is uniform since $g$ is $C^1$. Hence $F$ is smooth. 
 \end{proof}
 
 \begin{question}[Practice 2]
