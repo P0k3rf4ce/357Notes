@@ -1,0 +1,164 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry} % margins
+\usepackage[justification=centering]{caption}
+%\usepackage{calrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amsthm}
+\usepackage{float}
+\usepackage{tikz-cd}
+\usepackage{ytableau}
+\usepackage{dsfont}
+
+\renewcommand{\implies}{\Rightarrow}
+\newcommand{\longimplies}{\Longrightarrow}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\renewcommand{\H}{\mathbb{H}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\Lf}{\mathbb{L}}
+\newcommand{\Sp}{\mathbb{S}}
+\newcommand{\cl}[1]{\overline{#1}}
+\renewcommand{\emptyset}{\varnothing}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\maxnorm}[1]{\left\|#1\right\|_{\text{max}}}
+\newcommand{\opnorm}[1]{\left\|#1\right\|_{\mathrm{op}}}
+\newcommand{\supnorm}[1]{\left\|#1\right\|_{\infty}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\sspan}{\operatorname{span}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\ch}{\operatorname{char}}
+\newcommand{\poly}{\mathrm{P}}
+\newcommand{\mtx}{\mathcal{M}}
+\newcommand{\seq}{\mathbf{Seq}}
+\newcommand{\vv}[1]{\mathbf{#1}}
+\newcommand{\dirsum}{\oplus}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\im}{\operatorname{im}}
+
+\newcommand{\cj}[1]{\overline{#1}}
+\newcommand{\inprod}[2]{\left\langle#1,#2\right\rangle}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+\newcommand{\res}{\operatorname{res}}
+
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+
+% Theorem environments
+\usepackage{amsthm}
+
+\theoremstyle{definition} % The "plain" style italicizes all body text.
+	\newtheorem{thm}{Theorem}
+		\numberwithin{thm}{section} % Theorem numbers are determined by section.
+	\newtheorem{lemma}[thm]{Lemma}
+	\newtheorem{prop}[thm]{Proposition}
+	\newtheorem{cor}[thm]{Corollary}
+	\newtheorem{conj}[thm]{Conjecture}
+
+\theoremstyle{definition} % The "definition" style does not italicize body text..
+    \newtheorem{defn}[thm]{Definition}
+	\newtheorem{example}[thm]{Example}
+    \newtheorem{exercise}[thm]{Exercise}
+    \newtheorem{question}[thm]{Question}
+
+\usepackage{mathtools}
+
+\usetikzlibrary{decorations.markings,positioning,decorations.text}
+
+\def\xr{5}
+\def\yr{5}
+
+%\usepackage{titlesec}
+%\titleformat{\section}[hang]{\normalfont\fontsize{14}{0}\bfseries}{Problem 8.\thesection\ }{0pt}{}
+
+\begin{document}
+
+\section{Exam Practice}
+
+\begin{question}[Practice 1]
+Let $f : \mathbb{R} \to \mathbb{R}$ be a continuous function with compact support. Let $E \in \mathbb{R}$ and $\eta > 0$. Compute,
+\[
+\lim_{\eta \to 0^+} \mathrm{Im} \left[ \int_{\mathbb{R}} \frac{f(x)}{x - (E + i \eta)} \, dx \right]
+\]
+If $\eta > 0$ show that the function
+\[
+E \to \mathrm{Im} \left[ \int_{\mathbb{R}} \frac{f(x)}{x - (E + i \eta)} \, dx \right]
+\]
+is smooth.
+\end{question}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{question}[Practice 2]
+Show that a monotonic function $f : \mathbb{R} \to \mathbb{R}$ is Borel measurable.
+\end{question}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{question}[Practice 3]
+If $m(E) = 0$ what can you say about $L^p(E)$?
+\end{question}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{question}[Practice 4]
+For which $p$ are trigonometric polynomials dense in $L^p(-\pi, \pi)$?
+\end{question}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{question}[Practice 5]
+Let $(M,d)$ be a metric space and for $x \in M$ and a nonempty set $A$ define
+\[
+d(x, A) := \inf_{y \in A} d(x,y)
+\]
+Prove that $d(x, A)$ is a continuous function of $x$. Prove that $A$ is closed iff the following statement holds: for all $x \in M$ we have that $d(x, A) = 0$ iff $x \in A$.
+\end{question}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{question}[Practice 6]
+Let $f_n(x)$ be a sequence of polynomials and let $f(x) = \lim_{n \to \infty} f_n(x)$. Is $f$ necessarily continuous?
+\end{question}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{question}[Practice 7]
+Let $(M, d)$ be metric space. We say a sequence $x_n \in M$ is fast-Cauchy if there is a summable sequence $a_n > 0$ (i.e., $\sum a_n < \infty$) such that $d(x_n, x_{n+1}) < a_n$. Disprove or prove the following:
+\begin{enumerate}[label=(\alph*)]
+    \item A fast-Cauchy sequence is Cauchy
+    \item Every Cauchy sequence has a fast-Cauchy subsequence
+    \item A sequence is Cauchy iff every subsequence has a subsequence that is fast-Cauchy
+\end{enumerate}
+\end{question}
+
+\begin{proof}
+
+\end{proof}
+
+
+\end{document}
+    
