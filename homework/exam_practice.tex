@@ -147,9 +147,10 @@ d(x, A) := \inf_{y \in A} d(x,y)
 \]
 Prove that $d(x, A)$ is a continuous function of $x$. Prove that $A$ is closed iff the following statement holds: for all $x \in M$ we have that $d(x, A) = 0$ iff $x \in A$.
 \end{question}
-
 \begin{proof}
+Suppose $A$ is closed. Clearly if $x \in A$, we have $d(x, A) = 0$. If $x \notin A$, then since $A$ is closed, $x$ is an interior point of the open set $M \setminus A$, so there is some $r > 0$ such that $B_x(r) \subseteq M \setminus A$. This means that every point $y \in A$ satisfies $d(x, y) \geq r$, hence $d(x, A) \geq r > 0$.
 
+Conversely, suppose that $d(x, A) = 0$ iff $x \in A$. We show that $A$ is closed by showing that its complement is open. For any $x \in M \setminus A$, we let $r = d(x, A) > 0$. For any $y \in B_x(r)$, we have $d(x, y) < r = d(x, A) = \inf_{z \in A} d(x, z)$, so $y$ cannot be in $A$. Hence, $y \in M \setminus A \implies B_x(r) \subseteq M \setminus A$, and therefore, $A$ is closed.
 \end{proof}
 
 \begin{question}[Practice 6]
