@@ -1,0 +1,188 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry} % margins
+\usepackage[justification=centering]{caption}
+%\usepackage{calrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amsthm}
+\usepackage{float}
+\usepackage{tikz-cd}
+\usepackage{ytableau}
+\usepackage{dsfont}
+
+\renewcommand{\implies}{\Rightarrow}
+\newcommand{\longimplies}{\Longrightarrow}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\renewcommand{\H}{\mathbb{H}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\Lf}{\mathbb{L}}
+\newcommand{\Sp}{\mathbb{S}}
+\newcommand{\cl}[1]{\overline{#1}}
+\renewcommand{\emptyset}{\varnothing}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\maxnorm}[1]{\left\|#1\right\|_{\text{max}}}
+\newcommand{\opnorm}[1]{\left\|#1\right\|_{\mathrm{op}}}
+\newcommand{\supnorm}[1]{\left\|#1\right\|_{\infty}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\sspan}{\operatorname{span}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\ch}{\operatorname{char}}
+\newcommand{\poly}{\mathrm{P}}
+\newcommand{\mtx}{\mathcal{M}}
+\newcommand{\seq}{\mathbf{Seq}}
+\newcommand{\vv}[1]{\mathbf{#1}}
+\newcommand{\dirsum}{\oplus}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\im}{\operatorname{im}}
+
+\newcommand{\cj}[1]{\overline{#1}}
+\newcommand{\inprod}[2]{\left\langle#1,#2\right\rangle}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+\newcommand{\res}{\operatorname{res}}
+
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+
+% Theorem environments
+\usepackage{amsthm}
+
+\theoremstyle{definition} % The "plain" style italicizes all body text.
+	\newtheorem{thm}{Theorem}
+		\numberwithin{thm}{section} % Theorem numbers are determined by section.
+	\newtheorem{lemma}[thm]{Lemma}
+	\newtheorem{prop}[thm]{Proposition}
+	\newtheorem{cor}[thm]{Corollary}
+	\newtheorem{conj}[thm]{Conjecture}
+
+\theoremstyle{definition} % The "definition" style does not italicize body text..
+    \newtheorem{defn}[thm]{Definition}
+	\newtheorem{example}[thm]{Example}
+    \newtheorem{exercise}[thm]{Exercise}
+    \newtheorem{question}[thm]{Question}
+
+\usepackage{mathtools}
+
+\usetikzlibrary{decorations.markings,positioning,decorations.text}
+
+\def\xr{5}
+\def\yr{5}
+
+%\usepackage{titlesec}
+%\titleformat{\section}[hang]{\normalfont\fontsize{14}{0}\bfseries}{Problem 8.\thesection\ }{0pt}{}
+
+\begin{document}
+
+\section{Worksheet}
+
+\begin{question}[Practice 1]
+Let $f \in L^2$ with $\sum_n |\hat{f}(n)| < \infty$. Show that there is a continuous function $g$ such that $f = g$ a.e.
+\end{question}
+\begin{proof}
+
+\end{proof}
+
+\begin{question}[Practice 2]
+Let $f : \mathbb{R} \to \mathbb{R}$ be $2\pi$-periodic and in $C^\alpha$. That is, $|f(x) - f(y)| \leq C |x - y|^\alpha$ for some $C > 0$ and $\alpha \in (0, 1)$. Show that the Fourier series of $f$ converges pointwise to $f$.
+\end{question}
+\begin{proof}
+
+\end{proof}
+
+\begin{question}[Practice 3]
+Show that $L^\infty$ is complete.
+\end{question}
+\begin{proof}
+
+\end{proof}
+
+\begin{question}[Practice 4]
+Let $f : E \to \mathbb{R}$. If either $m(E) < \infty$ or $f \in L^p(E)$ for some $p \geq 1$, show that
+\[
+\lim_{p \to \infty} \|f\|_{L^p(E)} = \|f\|_{L^\infty(E)}.
+\]
+Find a counterexample if the assumptions are dropped.
+\end{question}
+\begin{proof}
+
+\end{proof}
+
+\begin{question}[Practice 5]
+Let $p \in [1, \infty)$. Let $A_p$ be the set of functions $f : [0, 1] \to \mathbb{R}$ that have a continuous derivative with
+\[
+\int_0^1 |f'(x)|^p dx \leq 1.
+\]
+For which $p$ are closed (with respect to the topology of uniform convergence) subsets of $A_p$ compact?
+\end{question}
+\begin{proof}
+
+\end{proof}
+
+\begin{question}[Practice 6]
+Let $p \in [1, \infty]$. Construct a function $f \in L^p(\mathbb{R})$ but $f \notin L^q(\mathbb{R})$ for any $q \neq p$.
+\end{question}
+\begin{proof}
+
+\end{proof}
+
+\begin{question}[Practice 7]
+Let $f_n$ be a sequence that converges in $L^p$ to some $f$. Show that there exists a subsequence that converges a.e.
+\end{question}
+\begin{proof}
+
+\end{proof}
+
+\begin{question}[Practice 8]
+This problem explores the concept of \textit{convergence in measure}. Let $f_n : E \to \mathbb{R}$ be a sequence of measurable functions. We say that $f_n$ converges to some $f$ in measure if for all $\varepsilon > 0$ we have
+\[
+\lim_{n \to \infty} m(\{x : |f_n(x) - f(x)| > \varepsilon\}) = 0.
+\]
+\begin{enumerate}[label=(\alph*)]
+    \item If $f_n$ converges to $f$ in $L^p$ show that it converges in measure.
+    \item If a sequence converges in measure, show that a subsequence converges pointwise a.e.
+    \item If $m(E) < \infty$ and $f_n$ converges pointwise, show that it converges in measure.
+    \item Find sequences that converge in measure but not pointwise.
+    \item Show that Fatou’s Lemma and the MCT hold if pointwise convergence is replaced by convergence in measure.
+\end{enumerate}
+\end{question}
+\begin{proof}
+
+\end{proof}
+
+\begin{question}[Practice 9]
+This problem shows that the Riemann integral coincides with the Lebesgue integral. In this problem let $f : [a, b] \to \mathbb{R}$ be a bounded function (not necessarily measurable).
+\begin{enumerate}[label=(\alph*)]
+    \item Let $P_k$ be a sequence of partitions of $[a, b]$ whose mesh goes to 0 and are nested inside each other (i.e., $P_{k+1}$ is a refinement of $P_k$ for all $k$). For $P_k$ let
+    \[
+    G_k(x) = \sum_j M_j \mathbf{1}_{(t_{j-1}, t_j]}, \quad g_k(x) = \sum_j m_j \mathbf{1}_{(t_{j-1}, t_j]},
+    \]
+    where the intervals $(t_{j-1}, t_j]$ are the partition of $[a, b]$ corresponding to $P_k$ and $M_j$, $m_j$ are the sup and inf of $f$ over $[t_{j-1}, t_j]$. Show that the Lebesgue integrals of $g_k$ and $G_k$ correspond to the upper and lower Riemann sums associated to $P_k$ and $f$.
+    
+    \item Let $G(x) = \lim_{k \to \infty} G_k(x)$ and $g(x) = \lim_{k \to \infty} g_k(x)$ (why do the limits exist?). Note $g \leq f \leq G$ everywhere. Show that if $f$ is Riemann integrable, then $g = G$ a.e. (simply note that the Lebesgue integrals of $G$ and $g$ are equal to the limits of the Lebesgue integrals of $G_k$ and $g_k$ which coincide if $f$ is Riemann integrable, as these integrals equal the upper and lower Riemann sums associated to the partitions $P_k$). Therefore, $f$ is measurable as $g$ and $G$ are limits of measurable functions and its Lebesgue integral equals its Riemann integral.
+    
+    \item Define
+    \[
+    H(x) = \lim_{\delta \to 0} \sup_{|y - x| \leq \delta} f(y), \quad h(x) = \lim_{\delta \to 0} \inf_{|y - x| \leq \delta} f(y).
+    \]
+    Why do the above limits exist? Show that $H(x) = h(x)$ iff $f$ is continuous at $x$.
+    
+    \item Show that the Lebesgue integrals of $H$ and $h$ are the limits of the upper and lower Riemann sums of $f$ over any sequence of partitions whose mesh goes to 0. So if $f$ is Riemann integrable, $H = h$ a.e. Therefore $f$ is the a.e. limit of continuous functions and hence is Lebesgue measurable and its Lebesgue integral equals its Riemann integral.
+\end{enumerate}
+\end{question}
+\begin{proof}
+
+\end{proof}
+    
+
+\end{document}
