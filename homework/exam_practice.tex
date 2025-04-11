@@ -168,11 +168,15 @@ Let $(M, d)$ be metric space. We say a sequence $x_n \in M$ is fast-Cauchy if th
     \item A sequence is Cauchy iff every subsequence has a subsequence that is fast-Cauchy
 \end{enumerate}
 \end{question}
-
 \begin{proof}
+\textit{(a).} This one is true. Note that $\sum_{k = n}^\infty = \sum_{k = 0}^\infty a_k - \sum_{k = 0}^{n - 1} a_k \to 0$ as $n \to \infty$, so given $\varepsilon > 0$, we can find $N > 0$ such that $\sum_{k = n}^\infty < \varepsilon$. Then, for any $m > n \geq N$, we have 
+\[ d(x_n, x_m) \leq \sum_{k = n}^{m - 1} d(x_k, x_{k + 1}) < \sum_{k = n}^{m - 1} a_k \leq \sum_{k = n}^\infty a_k < \varepsilon \]
+Hence $x_n$ is a Cauchy sequence.
 
+\textit{(b).} This one is also true. For every $k > 0$, since $x_n$ is Cauchy, we can choose an index $n_k > n_{k - 1}$ such that for all $j \geq n_k$, we have $d(x_j, x_{j + 1}) < 2^{-k}$. By construction, $d(x_{n_k}, x_{n_{k + 1}}) < 2^{-k}$, and $a_k = 2^{-k}$ is a geometric series, hence is summable. Thus $x_n$ has a fast Cauchy subsequence.
+
+\textit{(c).} This one is false if $M$ has at least two points $p \neq q$. Let $x_n$ be the sequence $x_{2k} = p, x_{2k + 1} = q$. Clearly, this is not Cauchy. However, any subsequence of it has a further subsequence that is either constant $p$ or constant $q$, which is clearly fast Cauchy.
 \end{proof}
-
 
 \end{document}
     
